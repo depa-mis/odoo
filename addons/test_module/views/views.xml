@@ -1,0 +1,98 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="test_module.list">
+      <field name="name">test_module list</field>
+      <field name="model">test_module.test_module</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+          <field name="position"/>
+          <field name="status"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="test_module.form">
+      <field name="name">test_module form</field>
+      <field name="model">test_module.test_module</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="value"/>
+            <field name="value2"/>
+          </group>
+          <group>
+            <field name="position"/>
+            <field name="status"/>
+<!--            <field name="test_relation_id" domain="[('relation', 'like', 'ทดสอบ')]"/>-->
+            <field name="test_relation_id" domain="[]"/>
+            <field name="test_relation_ids" domain="[]" widget="many2many_tags"/>
+            <field name="test_relations" domain="[]" widget="many2many_checkboxes"/>
+            <field name="sale_inherit_id" domain="[]"/>
+<!--            <field name="test_relation_ids" domain="[]">-->
+<!--              <tree>-->
+<!--                <field name="relation" string="ความสัมพันธ์"/>-->
+<!--                <field name="desc" string="คำอธิบาย"/>-->
+<!--              </tree>-->
+<!--            </field>-->
+          </group>
+          <group>
+            <field name="quantity" />
+            <field name="unit_price" />
+            <field name="price" />
+<!--            <field name="remark" />-->
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_category_chart" >
+      <field name="name">category.bar.chart</field>
+      <field name="model">test_module.test_module</field>
+      <field name="arch" type="xml">
+          <graph string="Project Tasks" type="bar" stacked="True">
+              <field name="name" type="row"/>
+              <field name="price" type="measure"/>
+          </graph>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="test_module.action_window">
+      <field name="name">test_module window</field>
+      <field name="res_model">test_module.test_module</field>
+      <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <record model="ir.actions.server" id="test_module.action_server">
+      <field name="name">test_module server</field>
+      <field name="model_id" ref="model_test_module_test_module"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Test Module" id="test_module.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Menu 1" id="test_module.menu_1" parent="test_module.menu_root"/>
+    <menuitem name="Menu 2" id="test_module.menu_2" parent="test_module.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="List" id="test_module.menu_1_list" parent="test_module.menu_1"
+              action="test_module.action_window"/>
+    <menuitem name="Server to list" id="test_module" parent="test_module.menu_2"
+              action="test_module.action_server"/>
+  </data>
+</odoo>

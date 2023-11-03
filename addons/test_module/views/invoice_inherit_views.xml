@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<odoo>
+    <record model="ir.ui.view" id="view_invoice_form_inherit">
+        <field name="name">invoice.form.inherit</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <field name="team_id" position="after">
+                <field name="sale_test"/>
+            </field>
+            <xpath expr="//page/field[@name='invoice_line_ids']//field[@name='quantity']" position="before">
+                <field name="is_cash" />
+            </xpath>
+            <xpath expr="//page/field[@name='invoice_line_ids']//field[@name='product_id']" position="before">
+                <button name="invoice_line_click" string="Click" type="object"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_invoice_form_inherit">
+        <field name="name">invoice_tree.inherit</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="before">
+                <button name="add_tax_value" string="Add Tax" type="object"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,145 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="resource_book_list">
+            <field name="name">resource_book_list</field>
+            <field name="model">resource_book</field>
+            <field name="arch" type="xml">
+                <tree string="ขอใช้บริการพาหนะ" default_order="create_date desc"
+                      decoration-success="resource_book_state == 'completed'"
+                      decoration-danger="resource_book_state == 'rejected'"
+                >
+                    <field name="resource_book_type"/>
+                    <field name="resource_book_car"/>
+                    <field name="resource_book_user"/>
+                    <field name="resource_book_destination"/>
+                    <field name="resource_book_start"/>
+                    <field name="resource_book_end"/>
+                    <field name="resource_book_state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="resource_book_form">
+            <field name="name">resource_book_form</field>
+            <field name="model">resource_book</field>
+            <field name="arch" type="xml">
+                <form string="ขอใช้บริการพาหนะ" >
+                    <field name="no_ce" invisible="1" />
+                    <field name="using_car_ids" invisible="1" />
+                    <header>
+                        <button string="จองพาหนะ"
+                                name="send_resource_request"
+                                type="object"
+                                icon="fa-paper-plane"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('resource_book_state', 'not in', ('draft'))]}"
+                                confirm="ต้องการส่งคำขอจองพาหนะ่"/>
+                        <field name="resource_book_state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="resource_book_type" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="resource_book_user"  />
+                                </group>
+                                <group colspan="6">
+                                    <field name="resource_book_head" options="{'no_create': True, 'no_quick_create': True, 'no_create_edit':True, 'no_open': True}" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="resource_book_start" />
+                                </group>
+                                <group colspan="3">
+                                    <field name="resource_book_sdate" readonly="1" force_save="1"/>
+                                </group>
+                                <group colspan="3">
+                                    <field name="resource_book_stime" readonly="1" force_save="1" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="resource_book_end" />
+                                </group>
+                                <group colspan="3">
+                                    <field name="resource_book_edate" readonly="1" force_save="1" />
+                                </group>
+                                <group colspan="3">
+                                    <field name="resource_book_etime" readonly="1" force_save="1" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="resource_book_car" widget="radio" 
+                                    domain="[('resource_type', '=', resource_book_type), ('id', 'not in', using_car_ids)]" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="resource_book_source" />
+                                </group>
+                                <group colspan="6">
+                                    <field name="resource_book_destination" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="resource_book_desc" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="resource_book_wait" widget="radio"/>
+                                </group>
+                                 <group colspan="6" attrs="{'invisible': [('resource_book_wait', '!=', 'wait')]}">
+                                    <field name="resource_book_waittime" widget="float_time" attrs="{'required': [('resource_book_wait', '=', 'wait')]}"/>
+                                </group>
+                            </group>
+
+                        </group>
+                        <notebook>
+                        <page string="ผู้ร่วมเดินทาง">
+                                <field name="resource_book_user_ids">
+                                    <tree string="ผู้ร่วมเดินทาง" editable="bottom">
+                                        <field name="employee_id"/>
+                                        <field name="job_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="resource_book_action_window">
+            <field name="name">จองพาหนะ</field>
+            <field name="res_model">resource_book</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('create_uid', '=', uid)]</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="resource_book_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="resource_book_list"/>
+            <field name="act_window_id" ref="resource_book_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="resource_book_]action_window_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="resource_book_form"/>
+            <field name="act_window_id" ref="resource_book_action_window"/>
+        </record>
+
+        <menuitem name="depa Facility" id="depa_facility.menu_depa_facility_root" web_icon="depa_facility,static/description/icon.png"/>
+
+        <menuitem name="จองพาหนะ" sequence="1" id="depa_facility.resource_book" parent="depa_facility.menu_resource_system" action="depa_facility.resource_book_action_window"/>
+
+    </data>
+</odoo>

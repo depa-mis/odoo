@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_category_chart" >
+      <field name="name">category.bar.chart</field>
+      <field name="model">test_module.test_module</field>
+      <field name="arch" type="xml">
+          <graph string="Project Tasks" type="bar" stacked="True">
+          </graph>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="chart_action_window">
+      <field name="name">category window</field>
+      <field name="res_model">test_module.test_module</field>
+      <field name="view_mode">graph</field>
+    </record>
+
+
+    <!-- menu categories -->
+    <menuitem name="Chart" id="chart_menu" parent="test_module.menu_root"/>
+<!--    <menuitem name="Menu test_relation 2" id="test_relation.menu_2" parent="test_module.menu_root"/>-->
+
+    <!-- actions -->
+    <menuitem name="Bar Chart" id="category_menu_bar" parent="chart_menu"
+              action="chart_action_window"/>
+<!--      <menuitem name="Category List Server" id="category_menu_list_server" parent="category_menu"-->
+<!--              action="category_action_server"/>-->
+<!--    <menuitem name="Server to list test_relation" id="test_relation" parent="test_relation.menu_2"-->
+<!--              action="test_relation.action_server"/>-->
+  </data>
+</odoo>

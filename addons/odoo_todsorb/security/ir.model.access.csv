@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_odoo_todsorb_odoo_todsorb,odoo_todsorb.odoo_todsorb,model_odoo_todsorb_odoo_todsorb,,1,0,0,0
+access_odoo_todsorb_reference_odoo_todsorb_reference,odoo_todsorb_reference,model_odoo_todsorb_reference,,1,1,1,1
+access_odoo_todsorb_odoo_todsorb_admin,odoo_todsorb.odoo_todsorb,model_odoo_todsorb_odoo_todsorb,fw_pfb_fin_system_user,1,1,1,1

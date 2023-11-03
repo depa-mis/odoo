@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="business_card_lines_list">
+            <field name="name">business_card_lines_list</field>
+            <field name="model">business_card_lines</field>
+            <field name="arch" type="xml">
+                <tree string="Business card" decoration-muted="memo_for_cancel != False">
+                    <field name="name" />
+                    <field name="name_en" />
+                    <field name="position" />
+                    <field name="phone_number" />
+                    <field name="email" />
+                    <field name="business_card_id" string="ชื่อบริษัท"/>
+                    <field name="memo_for_cancel" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="business_card_lines_action_window">
+            <field name="name">Business Card Lines</field>
+            <field name="res_model">business_card_lines</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+
+        <record model="ir.actions.act_window.view" id="business_card_lines_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="business_card_lines_list" />
+            <field name="act_window_id" ref="business_card_lines_action_window" />
+        </record>
+
+        <menuitem name="ข้อมูลตามบุคคล" id="depa_business_card.menu_card_name_system" parent="depa_business_card.menu_card_system"
+                action="depa_business_card.business_card_lines_action_window"/>
+
+
+    </data>
+</odoo>

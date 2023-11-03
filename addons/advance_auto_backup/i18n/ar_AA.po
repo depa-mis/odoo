@@ -1,0 +1,435 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* advance_auto_backup
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-11 13:48+0000\n"
+"PO-Revision-Date: 2021-03-11 16:52+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: aa\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid ""
+"<b>Warning:</b>\n"
+"                        Use SFTP with caution! This writes files to external servers under the path you specify."
+msgstr ""
+"<b>تحذير:</b>\n"
+"                        استخدم SFTP بحذر! يؤدي هذا إلى حفظ الملفات إلى الخوادم الخارجية ضمن المسار الذي تحدده."
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__folder
+msgid "Absolute path for storing the backups"
+msgstr "المسار الكامل لحفظ النسخ الاحتياطي"
+
+#. module: advance_auto_backup
+#: model:ir.module.category,name:advance_auto_backup.module_management
+msgid "Auto backup access"
+msgstr "النسخ الاحتياطي"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__send_mail_sftp_fail
+msgid "Auto. E-mail on backup fail"
+msgstr "إرسال بريد إلكتروني تلقائياً في حالة فشل النسخ الاحتياطي"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__autoremove
+msgid "Auto. Remove Backups"
+msgstr "الحذف التلقائي للنسخة"
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "Back-up view"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model:ir.ui.menu,name:advance_auto_backup.advance_auto_backup_menu
+msgid "Back-ups"
+msgstr "النسخ الاحتياطي"
+
+#. module: advance_auto_backup
+#: model:ir.ui.menu,name:advance_auto_backup.backup_conf_main_menu
+msgid "Backup"
+msgstr "النسخ الاحتياطي"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__folder
+msgid "Backup Directory"
+msgstr "مسار حفظ النسخ الاحتياطي"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__backup_type
+msgid "Backup Type"
+msgstr "نوع النسخ الاحتياطي"
+
+#. module: advance_auto_backup
+#: model:ir.model,name:advance_auto_backup.model_db_backup
+msgid "Backup configuration record"
+msgstr "سجل إعدادات النسخ الاحتياطي"
+
+#. module: advance_auto_backup
+#: code:addons/advance_auto_backup/models/db_backup.py:312
+#, python-format
+msgid "Backup is Done"
+msgstr "النسخ الاحتياطية انتهت"
+
+#. module: advance_auto_backup
+#: model:ir.actions.server,name:advance_auto_backup.backup_scheduler_ir_actions_server
+#: model:ir.cron,cron_name:advance_auto_backup.backup_scheduler
+#: model:ir.cron,name:advance_auto_backup.backup_scheduler
+msgid "Backup scheduler"
+msgstr "جدولة النسخة الاحتياطية"
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_tree
+msgid "Backups"
+msgstr "النسخ الاحتياطية"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__days_to_keep_sftp
+msgid ""
+"Choose after how many days the backup should be deleted from the FTP server. For example:\n"
+"If you fill in 5 the backups will be removed after 5 days from the FTP server."
+msgstr ""
+"اختر  عدد الأيام التي يجب حذف النسخة الاحتياطية بعدها من خادم FTP. على سبيل المثال:\n"
+"إذا قمت بملء 5 ، ستتم إزالة النسخ الاحتياطية بعد 5 أيام من خادم FTP."
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__days_to_keep
+msgid ""
+"Choose after how many days the backup should be deleted. For example:\n"
+"If you fill in 5 the backups will be removed after 5 days."
+msgstr ""
+"اختر  عدد الأيام التي يجب حذف النسخة الاحتياطية بعدها FTP. على سبيل المثال:\n"
+"إذا قمت بملء 5 ، ستتم إزالة النسخ الاحتياطية بعد 5 أيام ."
+
+#. module: advance_auto_backup
+#: model:ir.actions.act_window,name:advance_auto_backup.action_backup
+#: model:ir.ui.menu,name:advance_auto_backup.backup_conf_menu
+#: model:ir.ui.menu,name:advance_auto_backup.menu_action_backup
+msgid "Configure back-ups"
+msgstr " إعدادات النسخ الاحتياطي"
+
+#. module: advance_auto_backup
+#: code:addons/advance_auto_backup/models/db_backup.py:309
+#, python-format
+msgid "Congratulations: the backup has completed successfully. In the path: %s"
+msgstr "تهانينا: النسخة الاحتياطية تمت بنجاح في المسار:  %s"
+
+#. module: advance_auto_backup
+#: code:addons/advance_auto_backup/models/db_backup.py:132
+#, python-format
+msgid "Connection Test Failed!"
+msgstr "فشل اختبار الاتصال!"
+
+#. module: advance_auto_backup
+#: code:addons/advance_auto_backup/models/db_backup.py:127
+#, python-format
+msgid ""
+"Connection Test Succeeded!\n"
+"Everything seems properly set up for FTP back-ups!"
+msgstr ""
+"نجح اختبار الاتصال!\n"
+"يبدو أن كل شيء تم إعداده بشكل صحيح لعمليات النسخ الاحتياطي لبروتوكول نقل الملفات!"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__name
+msgid "Database"
+msgstr "قاعدة البيانات"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__name
+msgid "Database you want to schedule backups for"
+msgstr "قاعدة البيانات التي تريد جدولة النسخ الاحتياطية لها"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: advance_auto_backup
+#: model:ir.ui.menu,name:advance_auto_backup.advance_auto_backup_python_action_menu
+msgid "Do it"
+msgstr "نفذ الآن"
+
+#. module: advance_auto_backup
+#: selection:db.backup,backup_type:0
+msgid "Dump"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__email_to_notify
+msgid "E-mail to notify"
+msgstr "البريد الإلكتروني للإشعار"
+
+#. module: advance_auto_backup
+#: code:addons/advance_auto_backup/models/db_backup.py:98
+#, python-format
+msgid "Error ! No such database exists!"
+msgstr "خطأ ! لا توجد قاعدة بيانات، تأكد من اسمها!"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_ir_cron__field_domain
+msgid "Field Domain"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__email_to_notify
+msgid "Fill in the e-mail where you want to be notified that the backup failed on the FTP."
+msgstr "املأ البريد الإلكتروني حيث تريد أن يتم إعلامك بفشل النسخ الاحتياطي على FTP."
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "For example: /odoo/backups/"
+msgstr "مثلاً: /odoo/backups/"
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "Go to Settings / Technical / Automation / Scheduled Actions."
+msgstr "إذهب إلى Settings / Technical / Automation / Scheduled Actions."
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "Help"
+msgstr "المساعدة"
+
+#. module: advance_auto_backup
+#: code:addons/advance_auto_backup/models/db_backup.py:135
+#, python-format
+msgid "Here is what we got instead:\n"
+msgstr "هذا ما حصلنا عليه بدلاً من ذلك:\n"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__host
+msgid "Host"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__sftp_host
+msgid "IP Address SFTP Server"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__send_mail_sftp_fail
+msgid "If you check this option you can choose to automaticly get e-mailed when the backup to the external server failed."
+msgstr "إذا قمت بتحديد هذا الخيار ، يمكنك اختيار تلقي رسائل البريد الإلكتروني تلقائيًا عند فشل النسخ الاحتياطي إلى الخادم الخارجي."
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__autoremove
+msgid "If you check this option you can choose to automaticly remove the backup after xx days"
+msgstr "إذا قمت بتحديد هذا الخيار ، يمكنك اختيار إزالة النسخة الاحتياطية تلقائيًا بعد xx يومًا"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__sftp_write
+msgid "If you check this option you can specify the details needed to write to a remote server with SFTP."
+msgstr "إذا قمت بتحديد هذا الخيار ، يمكنك تحديد التفاصيل المطلوبة للحفظ إلى السيرفر البعيد باستخدام SFTP."
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "Local backup configuration"
+msgstr "إعدادات النسخ الاحتياطي المحلي"
+
+#. module: advance_auto_backup
+#: model:res.groups,name:advance_auto_backup.group_manager
+msgid "Manager"
+msgstr "مدير"
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "Need more help? Contact"
+msgstr "هل تحتاج مساعدة? تواصل مع"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__sftp_password
+msgid "Password User SFTP Server"
+msgstr "كلمة المرور لسيرفر SFTP"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__sftp_path
+msgid "Path external server"
+msgstr "مسار السيرفر الخارجي"
+
+#. module: advance_auto_backup
+#: code:addons/advance_auto_backup/models/db_backup.py:303
+#, python-format
+msgid "Plz., Complete the backup settings. From: Settings - Backup - Configure back-ups. or contact the system administrator"
+msgstr "فضلاً.، قم باستكمال إعدادات النسخ الاحتياطي. من: الاعدادات - النسخ الاحتياطي - إعدادات النسخ الاحتياطي. أو قم بالتواصل مع مسؤول النظام"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__port
+msgid "Port"
+msgstr "المنفذ"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__days_to_keep_sftp
+msgid "Remove SFTP after x days"
+msgstr "قم بإزالة SFTP بعد x يوم"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__days_to_keep
+msgid "Remove after x days"
+msgstr "أزل بعد x يوم"
+
+#. module: advance_auto_backup
+#: model:ir.actions.server,name:advance_auto_backup.advance_auto_backup_python_action
+msgid "Res Partner Server Action"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "SFTP"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__sftp_port
+msgid "SFTP Port"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model:ir.actions.act_window,name:advance_auto_backup.advance_auto_backup_ir_cron_act
+#: model:ir.model,name:advance_auto_backup.model_ir_cron
+#: model:ir.ui.menu,name:advance_auto_backup.menu_ir_cron_act
+msgid "Scheduled Actions"
+msgstr "الإجراءات المعدة للتنفيذ"
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "Search the action named 'Backup scheduler'."
+msgstr "ابحث في الإجراء المسمى \"جدولة النسخ الاحتياطي\"."
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "Set the scheduler to active and fill in how often you want backups generated."
+msgstr "اضبط المجدول على الوضع النشط وقم بملء عدد المرات التي تريد إنشاء النسخ الاحتياطية."
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "Sonod for Business and Information Technology Solutions"
+msgstr "شركة سنود لحلول الأعمال وتقنية المعلومات"
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "Test SFTP Connection"
+msgstr "اختبر اتصال SFTP"
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__sftp_host
+msgid "The IP address from your remote server. For example 192.168.0.1"
+msgstr "عنوان IP من خادمك البعيد. على سبيل المثال 192.168.0.1"
+
+#. module: advance_auto_backup
+#: code:addons/advance_auto_backup/models/db_backup.py:158
+#, python-format
+msgid "The backup path does not exist, and Odoo does not have permission to create the path, please create the path manually or choose another path."
+msgstr "مسار حفظ النسخة الاحتياطي غير موجود، وodoo لا يمتلك الصلاحية لإنشاء المسار ، فضلا قم بإنشاء المسار يدويا او اختر مسار آخر."
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__sftp_path
+msgid ""
+"The location to the folder where the dumps should be written to. For example /odoo/backups/.\n"
+"Files will then be written to /odoo/backups/ on your remote server."
+msgstr ""
+"موقع المجلد حيث يجب حفظ عمليات النسخ الاحتياطي. على سبيل المثال /odoo/backups/.\n"
+"ستتم كتابة الملفات بعد ذلك إلى /odoo/backups/ على خادمك البعيد."
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__sftp_password
+msgid "The password from the user where the SFTP connection should be made with. This is the password from the user on the external server."
+msgstr "كلمة المرور من المستخدم الذي يجب إجراء اتصال SFTP به. هذه هي كلمة المرور من المستخدم على الخادم الخارجي."
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__sftp_port
+msgid "The port on the FTP server that accepts SSH/SFTP calls."
+msgstr "المنفذ الموجود على خادم FTP الذي يقبل اتصالات SSH / SFTP."
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,help:advance_auto_backup.field_db_backup__sftp_user
+msgid "The username where the SFTP connection should be made with. This is the user on the external server."
+msgstr "اسم المستخدم الذي يجب إجراء اتصال SFTP به. هذا هو المستخدم الموجود على الخادم الخارجي."
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid ""
+"This configures the scheduler for automatic backup of the given database running on given host\n"
+"                        at given port on regular intervals.\n"
+"                        <br/>\n"
+"                        Automatic backups of the database can be scheduled as follows:"
+msgstr ""
+"يؤدي هذا إلى تكوين برنامج الجدولة للنسخ الاحتياطي التلقائي لقاعدة البيانات المحددة التي تعمل على مضيف معين\n"
+"                        في منفذ معين على فترات منتظمة.\n"
+"                        <br/>\n"
+"                        يمكن جدولة النسخ الاحتياطية التلقائية لقاعدة البيانات على النحو التالي:"
+
+#. module: advance_auto_backup
+#: model:res.groups,name:advance_auto_backup.group_user
+msgid "User"
+msgstr "مستخدم"
+
+#. module: advance_auto_backup
+#: model:ir.module.category,description:advance_auto_backup.module_management
+msgid "User access level for this module"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__sftp_user
+msgid "Username SFTP Server"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model:ir.model.fields,field_description:advance_auto_backup.field_db_backup__sftp_write
+msgid "Write to external server with sftp"
+msgstr "الحفظ إلى خادم خارجي باستخدام بروتوكول sftp"
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "Yenthe"
+msgstr "يانث"
+
+#. module: advance_auto_backup
+#: selection:db.backup,backup_type:0
+msgid "Zip"
+msgstr ""
+
+#. module: advance_auto_backup
+#: model_terms:ir.ui.view,arch_db:advance_auto_backup.view_backup_config_form
+msgid "or"
+msgstr "أو"

@@ -1,0 +1,188 @@
+<odoo>
+    <data>
+        <record id="inherit_view_id_inherit_ir_cron" model="ir.ui.view">
+            <field name="name">ir.cron.view.form.inherit</field>
+            <field name="model">ir.cron</field>
+            <field name="inherit_id" ref="base.ir_cron_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='action_wrapper']"  position="after" >
+                    <group>
+                        <field name="field_domain" invisible="1" groups="advance_auto_backup.group_manager"/>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='model_id']" position="attributes">
+                    <attribute name="invisible">context.get('auto_backup')</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="invisible">context.get('auto_backup')</attribute>
+                </xpath>
+                <xpath expr="//field[@name='doall']" position="attributes">
+                    <attribute name="invisible">context.get('auto_backup')</attribute>
+                </xpath>
+                <xpath expr="//notebook/page[@name='code']" position="attributes">
+                    <attribute name="invisible">context.get('auto_backup')</attribute>
+                </xpath>
+                <!-- <xpath expr="//notebook/page[@string='Help']" position="attributes">
+                    <attribute name="invisible">context.get('auto_backup')</attribute>
+                </xpath> -->
+            </field>
+        </record>
+
+        <record id="view_backup_config_form" model="ir.ui.view">
+            <field name="name">db.backup.form</field>
+            <field name="model">db.backup</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Back-up view">
+                    <sheet>
+                    <group col="4" colspan="4">
+                        <separator col="2" string="Local backup configuration"/>
+                    </group>
+                    <group name="configuration">
+                        <field name="host" colspan="2"/>
+                        <field name="name"/>
+                        <field name="port"/>
+                        <field name="backup_type"/>
+                        <field name="folder"/>
+                        <field name="autoremove"/>
+                        <field name="days_to_keep" attrs="{'invisible': [('autoremove','=',False)]}"/>
+                    </group>
+                    <group name="config_google" string="Google Drive Upload">
+                        <field name="is_upload"/>
+                        <field name="drive_folder_id" attrs="{'invisible':[('is_upload', '=', False)],'required':[('is_upload', '=', True)]}"/>
+                        <field name="gdrive_email_notif_ids" attrs="{'invisible':[('is_upload', '=', False)],'required':[('is_upload', '=', True)]}" widget="many2many_tags"/>
+                        <field name="drive_autoremove" attrs="{'invisible':[('is_upload', '=', False)]}"/>
+                        <field name="drive_to_remove" attrs="{'invisible': [('drive_autoremove','=',False)],'required':[('drive_autoremove', '=', True)]}"/>
+                    </group>
+                    <group name="allow_stfp" col="4" colspan="4">
+                        <separator col="2" string="SFTP"/>
+                    </group>
+                    <div style="width:50%;border-radius:10px;margin: 10px 0px;padding:15px 10px 15px 10px;
+background-repeat: no-repeat;background-position: 10px center;color: #9F6000;background-color: #FEEFB3;"
+                         attrs="{'invisible': [('sftp_write','=',False)]}">
+                        <b>Warning:</b>
+                        Use SFTP with caution! This writes files to external servers under the path you specify.
+                    </div>
+                    <group name="sftp_configuration">
+                        <field name="sftp_write"/>
+                        <field name="sftp_host"
+                               attrs="{'invisible':[('sftp_write', '=', False)],'required':[('sftp_write', '=', True)]}"/>
+                        <field name="sftp_port"
+                               attrs="{'invisible':[('sftp_write', '=', False)],'required':[('sftp_write', '=', True)]}"/>
+                        <field name="sftp_user"
+                               attrs="{'invisible':[('sftp_write', '=', False)], 'required':[('sftp_write', '=', True)]}"/>
+                        <field name="sftp_password"
+                               attrs="{'invisible':[('sftp_write', '=', False)],'required': [('sftp_write', '=', True)]}"
+                               password="True"/>
+                        <field name="sftp_path"
+                               attrs="{'invisible':[('sftp_write', '==', False)],'required':[('sftp_write', '==', True)]}"
+                               placeholder="For example: /odoo/backups/"/>
+                        <field name="days_to_keep_sftp"
+                               attrs="{'invisible': [('sftp_write', '=', False)], 'required': [('sftp_write', '=', True)]}"/>
+                        <field name="send_mail_sftp_fail" attrs="{'invisible': [('sftp_write','=',False)]}"/>
+                        <field name="email_to_notify"
+                               attrs="{'invisible':['|',('send_mail_sftp_fail', '==', False), ('sftp_write', '=', False)], 'required': [('send_mail_sftp_fail', '=', True)]}"/>
+                        <button name="test_sftp_connection" type="object"
+                                attrs="{'invisible': [('sftp_write','=',False)]}" string="Test SFTP Connection"/>
+                    </group>
+                    <separator string="Help" colspan="2"/>
+                    <div name="configuration_details">
+                        This configures the scheduler for automatic backup of the given database running on given host
+                        at given port on regular intervals.
+                        <br/>
+                        Automatic backups of the database can be scheduled as follows:
+                        <ol>
+                            <li>
+                                Go to Settings / Technical / Automation / Scheduled Actions.
+                            </li>
+                            <li>
+                                Search the action named 'Backup scheduler'.
+                            </li>
+                            <li>
+                                Set the scheduler to active and fill in how often you want backups generated.
+                            </li>
+                        </ol>
+                        <p style="font-size:18px;">
+                            Need more help? Contact
+                            <a href="https://github.com/Yenthe666/auto_backup">Yenthe</a>
+                            or
+                            <a href="https://sonod.tech">Sonod for Business and Information Technology Solutions</a>
+                        </p>
+                    </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_backup_config_tree" model="ir.ui.view">
+            <field name="name">db.backup.tree</field>
+            <field name="model">db.backup</field>
+            <!-- <field name="type">tree</field> -->
+            <field name="arch" type="xml">
+                <tree string="Backups">
+                    <field name='host'/>
+                    <field name='port'/>
+                    <field name='name'/>
+                    <field name='folder'/>
+                    <field name="autoremove"/>
+                    <field name="sftp_host"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_backup" model="ir.actions.act_window">
+            <field name="name">Configure back-ups</field>
+            <field name="res_model">db.backup</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_backup_config_tree"/>
+        </record>
+        
+        <record model="ir.actions.server" id="auto_backup_python_action">
+            <field name="name">Res Partner Server Action</field>
+            <field name="model_id" ref="model_db_backup"/>
+            <field name="state">code</field>
+            <field name="code">
+                action = model.schedule_backup()
+            </field>
+        </record>
+
+        <record id="auto_backup_ir_cron_act" model="ir.actions.act_window">
+            <field name="name">Scheduled Actions</field>
+            <field name="res_model">ir.cron</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="context">{
+                'search_default_all': 1,
+                'default_interval_type':'days',
+                'default_name':'Backup scheduler',
+                'default_numbercall':'-1',
+                'default_priority':'5',
+                'default_doall':'False',
+                'default_field_domain':'True',
+                'default_active':'True',
+                'default_interval_number':'1',
+                'default_state':'code',
+                'default_code':'model.schedule_backup()',
+                'auto_backup':1,
+                }
+                </field>
+                <field name="domain">[('field_domain','=',True)]</field>
+            <field name="view_id" ref="base.ir_cron_view_tree"/>
+        </record>
+
+        <menuitem id="auto_backup_menu" name="Back-ups" parent="base.menu_custom" groups="group_manager"/>
+        <menuitem id="backup_conf_menu" parent="auto_backup_menu" action="action_backup" />
+ 
+
+        <menuitem  id="backup_conf_main_menu" name="Backup" parent="base.menu_administration" groups="group_user"/>
+        <menuitem id="auto_backup_python_action_menu" parent="backup_conf_main_menu" name="Do it"  action="auto_backup_python_action" groups="group_user"/>
+        <menuitem id="menu_action_backup" action="action_backup" parent="backup_conf_main_menu" sequence="1" groups="group_manager"/>
+        <menuitem id="menu_ir_cron_act" action="auto_backup_ir_cron_act" parent="backup_conf_main_menu" sequence="2" groups="group_manager"/>
+
+        <menuitem name="Settings" id="base.menu_administration" web_icon="base,static/description/settings.png" sequence="500" groups="base.group_user"/>
+
+
+
+
+    </data>
+</odoo>

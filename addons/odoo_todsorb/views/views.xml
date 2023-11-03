@@ -1,0 +1,91 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="odoo_todsorb.list">
+      <field name="name">odoo_todsorb list</field>
+      <field name="model">odoo_todsorb.odoo_todsorb</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="odoo_todsorb.form">
+      <field name="name">odoo_todsorb form</field>
+      <field name="model">odoo_todsorb.odoo_todsorb</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="value"/>
+                <field name="unit_price" />
+                <field name="qty" />
+                <field name="price_total" />
+              </group>
+            </group>
+            <group>
+              <field name="odoo_todsorb_reference_id" />
+              <field name="odoo_todsorb_reference_id_description" />
+              <field name="odoo_todsorb_reference_ids" />
+              <field name="odoo_todsorb_reference_ids_2" />
+            </group>
+          </group>
+
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="odoo_todsorb.form">
+      <field name="name">odoo_todsorb form</field>
+      <field name="model">odoo_todsorb.odoo_todsorb</field>
+      <field name="arch" type="xml">
+        <graph>
+          <field name="name" />
+          <field name="value" type="measure" />
+          <field name="unit_price" />
+          <field name="price_total" />
+        </graph>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="odoo_todsorb.action_window">
+      <field name="name">odoo_todsorb window</field>
+      <field name="res_model">odoo_todsorb.odoo_todsorb</field>
+      <field name="view_mode">tree,form,graph</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <record model="ir.actions.server" id="odoo_todsorb.action_server">
+      <field name="name">odoo_todsorb server</field>
+      <field name="model_id" ref="model_odoo_todsorb_odoo_todsorb"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="odoo_todsorb" id="odoo_todsorb.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Menu 1" id="odoo_todsorb.menu_1" parent="odoo_todsorb.menu_root"/>
+    <menuitem name="Menu 2" id="odoo_todsorb.menu_2" parent="odoo_todsorb.menu_root"/>
+    <!-- actions -->
+    <menuitem name="List" id="odoo_todsorb.menu_1_list" parent="odoo_todsorb.menu_1"
+              action="odoo_todsorb.action_window"/>
+    <menuitem name="Server to list" id="odoo_todsorb" parent="odoo_todsorb.menu_2"
+              action="odoo_todsorb.action_server"/>
+  </data>
+</odoo>

@@ -1,0 +1,208 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="business_card_list">
+            <field name="name">business_card_list</field>
+            <field name="model">business_card</field>
+            <field name="arch" type="xml">
+                <tree string="Business card" default_order="create_date desc">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- <record model="ir.ui.view" id="business_card_kanban">
+            <field name="name">business_card_kanban</field>
+            <field name="model">business_card</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <kanban class="o_hr_employee_kanban" create="0" delete="0"
+                    default_order="create_date desc">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div
+                                    class="oe_kanban_details o_kanban_record_has_image_fill o_hr_kanban_record">
+                                    <div class="oe_kanban_details">
+                                        <div class="o_kanban_record_top">
+                                            <div class="o_kanban_record_headings">
+                                                <strong class="o_kanban_record_title">
+                                                    <field name="name" />
+                                                </strong>
+                                                <span t-if="record.category_id.raw_value"
+                                                    class="o_kanban_record_subtitle">
+                                                    <field name="name" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record> -->
+
+        <record model="ir.ui.view" id="business_card_form">
+            <field name="name">business_card_form</field>
+            <field name="model">business_card</field>
+            <field name="arch" type="xml">
+                <form string="Business card">
+                    <sheet>
+                        <div id="depa_employee_container">
+                            <div id="depa_employee_main">
+                                <field name="image" widget="image" class="oe_avatar" />
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="name" />
+                                    </h1>
+                                </div>
+
+                                <group>
+                                    <!-- <group colspan="4" col="12">
+                                        <group colspan="12">
+                                            <field name="name" />
+                                        </group>
+                                    </group> -->
+                                    <group colspan="4" col="12">
+                                        <group colspan="12">
+                                            <field name="address" />
+                                        </group>
+                                    </group>
+                                </group>
+                                <notebook>
+                                    <page string='สมาชิก'>
+                                        <field name="business_card_lines_ids">
+                                            <tree default_order="executive_position asc"
+                                            decoration-success="executive_position == 0"
+                                            decoration-info="executive_position == 1"
+                                            decoration-muted="memo_for_cancel != False">
+                                                <!--<field name="step" width="10%" />-->
+                                                <field name="executive_position" />
+                                                <field name="position" />
+                                                <field name="name" />
+                                                <field name="name_en" />
+                                                <field name="phone_number" />
+                                                <field name="email" />
+                                                <field name="remark" />
+                                                <field name="employees" widget="many2many_tags"/>
+                                                <field name="memo_for_cancel" />
+                                                <button name="action_make_cancel_wizard" type="object" string="ยกเลิก" class="oe_stat_button btn-sm pull-right" attrs="{'invisible': [('memo_for_cancel','!=',False)]}" />
+                                                <button name="action_make_restore" type="object" string="คืนค่า" class="oe_stat_button btn-sm pull-right" attrs="{'invisible': [('memo_for_cancel','=',False)]}" confirm="ต้องการคืนค่า่"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="business_card_lines_form">
+            <field name="name">business_card_lines_form</field>
+            <field name="model">business_card_lines</field>
+            <field name="arch" type="xml">
+                <form string="Business Card Lines">
+                    <sheet>
+                        <group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="user_image" widget="image" class="oe_avatar"/>
+                                </group>
+                                <group colspan="6">
+                                    <field name="executive_position"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="name"/>
+                                </group>
+                                <group colspan="6">
+                                    <field name="name_en"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="position"/>
+                                </group>
+                                <group colspan="6">
+                                    <field name="phone_number"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="email"/>
+                                </group>
+                                <group colspan="6">
+                                    <field name="employees" widget="many2many_tags"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="remark"/>
+                                </group>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string='Log'>
+                                <field name="business_card_lines_history_ids" options="{'no_create': True, 'no_create_edit':True,'no_open':True}">
+                                    <tree default_order="create_date desc">
+                                        <field name="name" readonly="1"/>
+                                        <field name="position" readonly="1"/>
+                                        <field name="phone_number" readonly="1"/>
+                                        <field name="email" readonly="1"/>
+                                        <field name="memo_for_cancel" readonly="1"/>
+                                        <field name="create_date" readonly="1" string="วันที่ถูกเปลี่ยน"/>
+                                        <field name="create_uid" readonly="1" string="ผู้แก้ไขข้อมูล"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="business_card_action_window">
+            <field name="name">Business Card</field>
+            <field name="res_model">business_card</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="business_card_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="sequence">1</field>
+            <field name="view_id" ref="business_card_list" />
+            <field name="act_window_id" ref="business_card_action_window" />
+        </record>
+
+        <!-- <record model="ir.actions.act_window.view" id="business_card_action_window_kanban">
+            <field name="view_mode">kanban</field>
+            <field name="sequence">2</field>
+            <field name="view_id" ref="business_card_kanban" />
+            <field name="act_window_id" ref="business_card_action_window" />
+        </record> -->
+
+        <record model="ir.actions.act_window.view" id="business_card_action_window_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="business_card_form" />
+            <field name="act_window_id" ref="business_card_action_window" />
+        </record>
+
+        <menuitem name="depa Business Card" id="depa_business_card.menu_depa_business_card_root" web_icon="depa_business_card,static/description/icon.png"/>
+
+
+         <menuitem name="Business Card" id="depa_business_card.menu_card_system" parent="depa_business_card.menu_depa_business_card_root"/>
+
+        <menuitem name="ข้อมูลตามบริษัท" id="depa_business_card.menu_card_business_system" parent="depa_business_card.menu_card_system"
+                  action="depa_business_card.business_card_action_window"/>
+
+
+
+
+    </data>
+</odoo>

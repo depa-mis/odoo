@@ -1,0 +1,48 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="odoo_todsorb_reference_list">
+      <field name="name">odoo_todsorb_reference list</field>
+      <field name="model">odoo_todsorb_reference</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="active"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="odoo_todsorb_reference_form">
+      <field name="name">odoo_todsorb_reference form</field>
+      <field name="model">odoo_todsorb_reference</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="value"/>
+          </group>
+          <group>
+            <field name="description" />
+            <field name="active"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="odoo_todsorb_reference_action_window">
+      <field name="name">odoo_todsorb_reference window</field>
+      <field name="res_model">odoo_todsorb_reference</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">['|', ('active', '=', True), ('active', '=', False)]</field>
+    </record>
+
+
+    <!-- actions -->
+    <menuitem name="List Reference" id="odoo_todsorb_reference_menu_3_list" parent="odoo_todsorb.menu_1"
+              action="odoo_todsorb_reference_action_window"/>
+  </data>
+</odoo>

@@ -1,0 +1,9 @@
+<odoo>
+
+    <menuitem
+            id="report_menu"
+            name="Report"
+            sequence="60"
+    />
+
+</odoo>

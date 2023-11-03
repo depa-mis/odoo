@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="fin_100_inherit_reset_button" model="ir.ui.view">
+		<field name="name">fin_100_inherit_reset_button</field>
+		<field name="model">fw_pfb_fin_system_100</field>
+		<field name="inherit_id" ref="fin_system.fin_system_100_all_fin_form_view"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='approver']" position="before">
+				<div style="margin-top: 10px;">
+					<button name="action_reset_recent_approve" string="Reset การอนุมัติล่าสุด"
+					attrs="{'invisible': [('state', 'in', ['draft', 'sent', 'canceled'])]}"
+					groups="depa_fin_inherit.group_fin_100_reset_button_setting" type="object"
+					class="oe_highlight" confirm="คืนค่าแถวที่อนุมัติล่าสุดเป็น 'รอดำเนินการ' หรือไม่?"/>
+				</div>
+			</xpath>
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="depa_dashboard.list">
+          <field name="name">depa Dashboard list</field>
+          <field name="model">depa_dashboard</field>
+          <field name="arch" type="xml">
+              <tree>
+                <field name="request_desc"/>
+              </tree>
+          </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="depa_dashboard.action_window">
+          <field name="name">depa Dashboard window</field>
+          <field name="res_model">depa_dashboard</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+
+        <menuitem name="depa Dashboard" id="depa_dashboard.menu_root"/>
+
+        <!-- menu categories -->
+        <menuitem name="Dashboard Fin" id="depa_dashboard.menu_1" parent="depa_dashboard.menu_root"/>
+
+
+    </data>
+</odoo>

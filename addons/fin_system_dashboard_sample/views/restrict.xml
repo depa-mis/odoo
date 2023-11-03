@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+
+        <template id="restrict_area">
+            <t t-call="website.layout">
+                <t t-set="title">Not allowed to this area</t>
+                <div class="oe_structure" id='restrict_area'>
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class='card-title' style='letter-spacing:2px;font-weight:bold;font-style:italic;'>
+                                    You're not allowed to this area
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>
+

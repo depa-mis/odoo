@@ -1,0 +1,77 @@
+<odoo>
+    <data>
+        <!-- FIN 100 -->
+        <record model="ir.ui.view" id="depa_dashboard_fin_100_graph">
+            <field name="name">dashbaord fin 100 graph</field>
+            <field name="model">fw_pfb_fin_system_100</field>
+            <field name="arch" type="xml">
+                <graph string="Fin 100 Summary" stacked="False">
+                    <field name="fin_type" />
+                    <field name="state" />
+                </graph>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="depa_dashboard_fin_100_action_window">
+            <field name="name">กราฟ FIN 100</field>
+            <field name="res_model">fw_pfb_fin_system_100</field>
+            <field name="view_mode">graph</field>
+            <field name="domain">[('state', 'not in', ['draft','completed','cancelled','reject']), ('next_approval_id.fin_position', '=', 'DirectorOfOffice')]</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="depa_dashboard_fin_100_action_window_graph">
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="depa_dashboard_fin_100_graph"/>
+            <field name="act_window_id" ref="depa_dashboard_fin_100_action_window"/>
+        </record>
+
+        <!-- FIN 201 -->
+        <record model="ir.ui.view" id="depa_dashboard_fin_201_graph">
+            <field name="name">dashbaord fin 201 graph</field>
+            <field name="model">fw_pfb_fin_system_201</field>
+            <field name="arch" type="xml">
+                <graph string="Fin 201 Summary" stacked="False">
+                    <field name="fin_type" />
+                    <field name="state" />
+                </graph>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="depa_dashboard_fin_201_action_window">
+            <field name="name">กราฟ FIN 201</field>
+            <field name="res_model">fw_pfb_fin_system_201</field>
+            <field name="view_mode">graph</field>
+            <field name="domain">[('state', 'not in', ['draft','completed','cancelled','reject']), ('next_approval_id.fin_position', '=', 'DirectorOfOffice')]</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="depa_dashboard_fin_201_action_window_graph">
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="depa_dashboard_fin_201_graph"/>
+            <field name="act_window_id" ref="depa_dashboard_fin_201_action_window"/>
+        </record>
+
+        <!-- FIN 401 -->
+        <record model="ir.ui.view" id="depa_dashboard_fin_401_graph">
+            <field name="name">dashbaord fin 401 graph</field>
+            <field name="model">fw_pfb_fin_system_401</field>
+            <field name="arch" type="xml">
+                <graph string="Fin 401 Summary" stacked="False">
+                    <field name="fin_type" />
+                    <field name="state" />
+                </graph>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="depa_dashboard_fin_401_action_window">
+            <field name="name">กราฟ FIN 401</field>
+            <field name="res_model">fw_pfb_fin_system_401</field>
+            <field name="view_mode">graph</field>
+            <field name="domain">[('state', 'not in', ['draft','completed','cancelled','reject']), ('next_approval_id.fin_position', '=', 'DirectorOfOffice')]</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="depa_dashboard_fin_401_action_window_graph">
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="depa_dashboard_fin_401_graph"/>
+            <field name="act_window_id" ref="depa_dashboard_fin_401_action_window"/>
+        </record>
+
+        <!-- menu item -->
+        <menuitem name="FIN 100" id="depa_dashboard.FIN100_menu" sequence="1" parent="depa_dashboard.menu_1" action="depa_dashboard_fin_100_action_window"/>
+        <menuitem name="FIN 201" id="depa_dashboard.FIN201_menu" sequence="2" parent="depa_dashboard.menu_1" action="depa_dashboard_fin_201_action_window"/>
+        <menuitem name="FIN 401" id="depa_dashboard.FIN401_menu" sequence="3" parent="depa_dashboard.menu_1" action="depa_dashboard_fin_401_action_window"/>
+    </data>
+</odoo>

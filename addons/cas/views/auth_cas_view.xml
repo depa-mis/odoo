@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+© 2016-2018 Elico Corp (https://www.elico-corp.com).
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
+-->
+<odoo>
+    <record id="cas.web_login_cas_auth" model="ir.ui.view">
+        <field name="name">Add</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="web.login"/>
+        <field name="arch" type="xml">
+              <xpath expr="//button[@type='submit']" position="before">
+            <a name="login" class="btn btn-primary"
+               href='/cas'>
+                CAS Login
+            </a>
+        </xpath>
+
+        </field>
+    </record>
+
+<!--    <template id="assets_backend" name="auth_cas assets"-->
+<!--              inherit_id="web.assets_backend">-->
+<!--        <xpath expr="." position="inside">-->
+<!--            <link rel="stylesheet"-->
+<!--                  href="/cas/static/src/css/auth_cas.css"/>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+<!--    <template id="cas.cas_auth_form" name="OAuth Providers">-->
+<!--        <a t-att-href="/cas" class="btn btn-link"/>-->
+<!--    </template>-->
+
+<!--    <template id="cas.web_login_cas_auth" inherit_id="web.login"-->
+<!--              name="Cas Login Buttons">-->
+<!--        <xpath expr="//button[@type='submit']" position="before">-->
+<!--            <a name="login" class="btn btn-primary"-->
+<!--               href='/cas'>-->
+<!--                CAS Login-->
+<!--            </a>-->
+<!--        </xpath>-->
+<!--    </template>-->
+</odoo>

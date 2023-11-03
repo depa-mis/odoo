@@ -1,0 +1,138 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="room_book_approve_list">
+            <field name="name">room_book_approve_list</field>
+            <field name="model">room_book</field>
+            <field name="arch" type="xml">
+                <tree string="ขอใช้ห้องประชุม" create="0" default_order="create_date desc"
+                      decoration-success="room_book_state == 'completed'"
+                      decoration-danger="room_book_state == 'rejected'"
+                >
+                    <field name="room_book_floor"/>
+                    <field name="room_booking"/>
+                    <field name="room_book_user"/>
+                    <field name="room_book_start"/>
+                    <field name="room_book_end"/>
+                    <field name="room_book_state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="room_book_approve_form">
+            <field name="name">room_book_approve_form</field>
+            <field name="model">room_book</field>
+            <field name="arch" type="xml">
+                <form string="ขอใช้ห้องประชุม" duplicate="0" copy="0" create="0">
+                    <header>
+                        <button string="อนุมัติ"
+                                name="send_room_approve"
+                                type="object"
+                                icon="fa-check"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('room_book_state', 'not in', ('pending'))]}"
+                                confirm="ต้องการอนุมัติคำขอจองห้องประชุม"/>
+                        <button string="ปฏิเสธ"
+                                name="send_room_reject"
+                                type="object"
+                                icon="fa-times"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('room_book_state', 'not in', ('pending'))]}"
+                                confirm="ต้องการปฏิเสธคำขอจองพาหนะ่"/>
+                        <field name="room_book_state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="room_book_user"  />
+                                </group>
+                                <group colspan="6">
+                                    <field name="room_book_floor" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="room_book_start" />
+                                </group>
+                                 <group colspan="6">
+                                    <field name="room_book_startdate" readonly="1" force_save="1"/>
+                                </group>
+<!--                                <group colspan="3">-->
+<!--                                    <field name="room_book_sdate" readonly="1" force_save="1"/>-->
+<!--                                </group>-->
+<!--                                <group colspan="3">-->
+<!--                                    <field name="room_book_stime" readonly="1" force_save="1" />-->
+<!--                                </group>-->
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="room_book_end" />
+                                </group>
+                                <group colspan="6">
+                                    <field name="room_book_enddate" readonly="1" force_save="1"/>
+                                </group>
+<!--                                <group colspan="3">-->
+<!--                                    <field name="room_book_edate" readonly="1" force_save="1" />-->
+<!--                                </group>-->
+<!--                                <group colspan="3">-->
+<!--                                    <field name="room_book_etime" readonly="1" force_save="1" />-->
+<!--                                </group>-->
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="room_booking" widget="radio"
+                                    domain="[('room_floor', '=', room_book_floor)]" />
+                                </group>
+                            </group>
+
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="room_book_desc" />
+                                </group>
+                            </group>
+                        </group>
+                        <notebook>
+                        <page string="ผู้เข้าร่วมประชุม">
+                                <field name="room_book_invite_ids">
+                                    <tree string="ผู้เข้าร่วมประชุม" editable="bottom">
+                                        <field name="employee_id"/>
+                                        <field name="job_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="room_book_approve_action_window">
+            <field name="name">อนุมัติจองห้องประชุม</field>
+            <field name="res_model">room_book</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('room_book_state', '!=', 'draft')]</field>
+
+        </record>
+        <record model="ir.actions.act_window.view" id="room_book_approve_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="room_book_approve_list"/>
+            <field name="act_window_id" ref="room_book_approve_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="room_book_approve_action_window_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="room_book_approve_form"/>
+            <field name="act_window_id" ref="room_book_approve_action_window"/>
+        </record>
+
+        <menuitem name="อนุมัติจองห้องประชุม" sequence="2" id="depa_facility.room_book_approve"
+                  parent="depa_facility.menu_room_system"
+                  action="depa_facility.room_book_approve_action_window"
+                  groups="group_approval_depa_facility_room"
+        />
+
+    </data>
+</odoo>

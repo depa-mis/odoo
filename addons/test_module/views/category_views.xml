@@ -1,0 +1,63 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="category_list">
+      <field name="name">Category list</field>
+      <field name="model">test_module.category</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="desc"/>
+          <field name="active"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="category_form">
+      <field name="name">Category form</field>
+      <field name="model">test_module.category</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="desc"/>
+            <field name="active"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="category_action_window">
+      <field name="name">category window</field>
+      <field name="res_model">test_module.category</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">['|', ('active', '=', True), ('active', '!=', True)]</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <record model="ir.actions.server" id="category_action_server">
+      <field name="name">test_relation server</field>
+      <field name="model_id" ref="model_test_module_category"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": "test_module.category",
+        }
+      </field>
+    </record>
+
+
+    <!-- menu categories -->
+    <menuitem name="Category" id="category_menu" parent="test_module.menu_root"/>
+<!--    <menuitem name="Menu test_relation 2" id="test_relation.menu_2" parent="test_module.menu_root"/>-->
+
+    <!-- actions -->
+    <menuitem name="Category List" id="category_menu_list" parent="category_menu"
+              action="category_action_window"/>
+      <menuitem name="Category List Server" id="category_menu_list_server" parent="category_menu"
+              action="category_action_server"/>
+<!--    <menuitem name="Server to list test_relation" id="test_relation" parent="test_relation.menu_2"-->
+<!--              action="test_relation.action_server"/>-->
+  </data>
+</odoo>

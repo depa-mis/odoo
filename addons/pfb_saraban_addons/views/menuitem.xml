@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="report_document_menu" name="รายงาน" parent="pfb_saraban.main_document_menu" sequence="5" />
+    <menuitem id="receive_external_report_menu" name="ทะเบียนหนังสือรับจากหน่วยงานภายนอก" parent="report_document_menu" action="receive_external_report_action" groups="pfb_saraban.group_user_document_rec" />
+    <menuitem id="internal_document_export" name="ทะเบียนหนังสือส่งออกของหน่วยงานภายใน" parent="report_document_menu" action="internal_document_export_action" groups="pfb_saraban.group_user_document_rec" />
+    <menuitem id="internal_document_export_main" name="ทะเบียนหนังสือภายใน (บันทึกข้อความ)" parent="report_document_menu" action="internal_document_export_main_action" groups="pfb_saraban.group_user_document_rec" />
+    <menuitem id="internal_document_export_all" name="ทะเบียนหนังสือรับจากหน่วยงานภายใน" parent="report_document_menu" action="internal_document_export_all_action" groups="pfb_saraban.group_user_document_rec" />
+</odoo>

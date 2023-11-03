@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="receive_external_report_tree_view">
+        <field name="name">receive.external.report.tree</field>
+        <field name="model">receive.document.main</field>
+        <field name="arch" type="xml">
+            <tree default_order="id desc" create="false" edit="false" delete="false" duplicate="false">
+                <field name="name_real" />
+                <field name="date_document_real" />
+                <field name="refer" />
+                <field name="date_receive" />
+                <field name="subject" />
+                <field name="from_document" />
+                <field name="job_name" widget="many2many_tags" string="To" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="receive_external_report_pivot_view" model="ir.ui.view">
+        <field name="name">receive.external.report.pivot</field>
+        <field name="model">receive.document.main</field>
+        <field name="arch" type="xml">
+            <graph string="ทะเบียนหนังสือรับจากหน่วยงานภายนอก" type="pivot">
+                <field name="department_name" type="row"  />
+                <!-- <field name="document_type" type="col"  /> -->
+                <field name="date_document" type="row"  />
+                <field name="date_document_real" type="row" />
+                <field name="create_uid" invisible="1" />
+                <field name="create_date" invisible="1" />
+                <field name="write_date" invisible="1" />
+                <field name="approval_count" invisible="1" />
+                <field name="name_real" invisible="1" />
+                <field name="name" invisible="1" />
+                <field name="refer" invisible="1" />
+                <field name="state" invisible="1" />
+                <field name="employee_id" invisible="1" />
+                <field name="speed" invisible="1" />
+            </graph>
+        </field>
+    </record>
+
+    <!-- Receive Main All list action -->
+    <record model="ir.actions.act_window" id="receive_external_report_action">
+        <field name="name">ทะเบียนหนังสือรับจากหน่วยงานภายนอก</field>
+        <field name="res_model">receive.document.main</field>
+        <field name="view_id" ref="receive_external_report_tree_view"/>
+        <field name="view_mode">tree,pivot,graph</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="receive_external_report_action_tree">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="receive_external_report_tree_view"/>
+        <field name="act_window_id" ref="receive_external_report_action"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="receive_external_report_action_pivot">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="receive_external_report_pivot_view"/>
+        <field name="act_window_id" ref="receive_external_report_action"/>
+    </record>
+    <!-- END Receive Main All list action -->
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="receive_document_form_inherit">
+            <field name="name">receive_document_form_inherit</field>
+            <field name="model">receive.document.main</field>
+            <field name="inherit_id" ref="pfb_saraban.receive_document_main_form_need_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='reference_internal']" position="inside">
+                    <xpath expr="//field[@name='subject']" position="after">
+                        <field name="to_approver"/>
+                    </xpath>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

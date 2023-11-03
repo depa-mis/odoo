@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_business_card,business_card,model_business_card,,1,1,1,1
+access_business_category,business_category,model_business_category,,1,1,1,1
+access_business_card_lines,business_card_lines,model_business_card_lines,,1,1,1,1
+access_business_card_lines_history,business_card_lines_history,model_business_card_lines_history,,1,1,1,1

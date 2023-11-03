@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="internal_document_export_main_tree_views">
+        <field name="name">internal.document.export.main.tree</field>
+        <field name="model">document.internal.main</field>
+        <field name="arch" type="xml">
+            <tree string="ทะเบียนหนังสือภายใน (บันทึกข้อความ)" default_order="id desc" create="false" edit="false" delete="false" duplicate="false">
+                <field name="name" />
+                <field name="name_real" />
+                <field name="date_document_real" />
+                <field name="department_name" />
+                <field name="subject" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="internal_document_export_main_pivot_views" model="ir.ui.view">
+        <field name="name">internal.document.export.main.pivot</field>
+        <field name="model">document.internal.main</field>
+        <field name="arch" type="xml">
+            <pivot string="ทะเบียนหนังสือภายใน (บันทึกข้อความ)">
+                <field name="department_name" type="row"  />
+                <field name="document_type" type="row"  />
+                <field name="date_document" type="row"  />
+                <field name="date_document_real" type="row" />
+                <field name="create_uid" invisible="1" />
+                <field name="create_date" invisible="1" />
+                <field name="write_date" invisible="1" />
+                <field name="approval_count" invisible="1" />
+                <field name="name_real" invisible="1" />
+                <field name="name" invisible="1" />
+                <field name="dear" invisible="1" />
+                <field name="dear_select" invisible="1" />
+                <field name="state" invisible="1" />
+                <field name="employee_id" invisible="1" />
+                <field name="speed" invisible="1" />
+                <field name="sign" invisible="1" />
+                <field name="sign_employee" invisible="1" />
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Receive Main All list action -->
+    <record model="ir.actions.act_window" id="internal_document_export_main_action">
+        <field name="name">ทะเบียนหนังสือภายใน (บันทึกข้อความ)</field>
+        <field name="res_model">document.internal.main</field>
+        <field name="view_id" ref="internal_document_export_main_tree_views"/>
+        <field name="view_mode">tree,pivot,graph</field>
+        <field name="domain">[
+                ('document_type','=','บันทึกข้อความ'),
+            ]</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="internal_document_export_main_action_tree">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="internal_document_export_main_tree_views"/>
+        <field name="act_window_id" ref="internal_document_export_main_action"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="internal_external_export_main_action_pivot">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="internal_document_export_main_pivot_views"/>
+        <field name="act_window_id" ref="internal_document_export_main_action"/>
+    </record>
+    <!-- END Receive Main All list action -->
+
+</odoo>

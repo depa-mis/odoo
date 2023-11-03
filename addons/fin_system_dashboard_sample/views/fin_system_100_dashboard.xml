@@ -1,0 +1,102 @@
+<odoo>
+    <data>
+
+        <template id="fin_100_dashboard">
+            <t t-call="web.html_container">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js" ></script>
+                <t t-set="title">FIN 100 Dashboard</t>
+                <div class="oe_structure" >
+                    <div class="container">
+                        <h1 style='letter-spacing:2px;font-weight:bold;font-style:italic;text-decoration: underline;'>
+                            Dashboard
+                        </h1>
+
+                    <canvas id="myChart_1" width="400" height="400"></canvas>
+                    <script>
+                    var ctx = document.getElementById('myChart_1').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            datasets: [{
+                                label: '# of Votes',
+                                data: [12, 19, 3, 5, 2, 3],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                    </script>
+
+                    <canvas id="myChart_2" width="400" height="400"></canvas>
+                    <script>
+                    var ctx = document.getElementById('myChart_2').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: [
+                                'Red',
+                                'Blue',
+                                'Yellow'
+                              ],
+                              datasets: [{
+                                label: 'My First Dataset',
+                                data: [300, 50, 100],
+                                backgroundColor: [
+                                  'rgb(255, 99, 132)',
+                                  'rgb(54, 162, 235)',
+                                  'rgb(255, 205, 86)'
+                                ],
+                                hoverOffset: 4
+                            }]
+                        }
+                    });
+                    </script>
+
+                    <t t-foreach="fin_list" t-as="fl">
+                        <div class="card">
+                          <div class="card-header">
+                            <t t-esc="fl_value['fin100_name']" /> 
+                          </div>
+                          <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                              <p><t t-esc="fl_value['fin100_state']" /></p>
+                            </blockquote><br />
+                          </div>
+                        </div>
+                    </t>
+
+
+                    </div>
+                </div>
+            </t>
+        </template>
+
+
+
+
+    </data>
+</odoo>
+

@@ -1,0 +1,138 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="postal_system_list">
+            <field name="name">postal_system_list</field>
+            <field name="model">postal_system</field>
+            <field name="arch" type="xml">
+                <tree string="ขอใช้บริการส่งไปรษณีย์"
+                      default_order="create_date desc"
+                      decoration-muted="postal_serial == False"
+                      decoration-success="sticker_serial != False and postal_serial != False"
+                      decoration-warning="sticker_serial == False and postal_serial != False"
+                >
+                    <field name="postal_serial"/>
+                    <field name="recipient_name"/>
+                    <field name="destination_province"/>
+                    <field name="postal_type"/>
+                    <field name="sticker_serial"/>
+                    <field name="create_date" string="วันที่ร้องขอ"/>
+                    <field name="approve_date" string="วันที่อนุมัติ" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="postal_system_form">
+            <field name="name">postal_system_form</field>
+            <field name="model">postal_system</field>
+            <field name="arch" type="xml">
+                <form string="ขอใช้บริการส่งไปรษณีย์">
+                    <field name="requester_id" invisible="1"/>
+                    <header>
+                        <button string="ยืนยันคำขอ"
+                                attrs="{'invisible': [('postal_serial', '!=', False)]}"
+                                name="send_postal_request"
+                                type="object"
+                                icon="fa-paper-plane"
+                                class="oe_highlight" confirm="ต้องการส่งคำขอใช้บริการไปรษณีย์ใช่หรือไม่"/>
+                        <button string="พิมพ์ใบปะหน้า"
+                                attrs="{'invisible': [('sticker_serial', '==', False)]}"
+                                name="print_complete_document"
+                                type="object"
+                                icon="fa-print"
+                                class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group colspan="4" col="12">
+                                <group colspan="4">
+                                    <field name="postal_serial" readonly="1"/>
+                                </group>
+                                <group colspan="4">
+                                    <field name="sticker_serial" readonly="1"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="4">
+                                    <field name="object_send"/>
+                                </group>
+                                <group colspan="4">
+                                    <field name="recipient_name" string="ชื่อผู้รับ"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="8">
+                                    <field name="destination" string="ที่อยู่ผู้รับ"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="4">
+                                    <field name="postal_type"/>
+                                </group>
+                                <group colspan="4">
+                                    <field name="destination_preset" string="ปลายทางที่ตั้งค่าไว้" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="4">
+                                    <field name="destination_type_selection"/>
+                                </group>
+                                <group colspan="4" attrs="{'invisible': [('destination_type_selection', '!=', 'internal')]}">
+                                    <field name="destination_province" attrs="{'required': [('destination_type_selection', '=', 'internal')]}"/>
+                                </group>
+                                <group colspan="4" attrs="{'invisible': [('destination_type_selection', '!=', 'external')]}">
+                                    <field name="destination_country" attrs="{'required': [('destination_type_selection', '=', 'external')]}"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="4">
+                                    <field name="destination_postal_code"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="8">
+                                    <field name="remark" />
+                                </group>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="postal_system_action_window">
+            <field name="name">บริการไปรษณีย์</field>
+            <field name="res_model">postal_system</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('requester_id.user_id.id', '=', uid)]</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="postal_system_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="postal_system_list"/>
+            <field name="act_window_id" ref="postal_system_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="postal_system_action_window_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="postal_system_form"/>
+            <field name="act_window_id" ref="postal_system_action_window"/>
+        </record>
+
+        <!-- Root Menu -->
+
+
+        <!-- Tab Menu -->
+        <menuitem name="บริการไปรษณีย์" sequence="1" id="depa_facility.menu_postal_system" parent="depa_facility.menu_depa_facility_root"/>
+
+        <!-- Sub Menu for Postal System -->
+        <menuitem name="ใช้บริการส่งไปรษณีย์" sequence="1" id="depa_facility.postal_system_request" parent="depa_facility.menu_postal_system" action="depa_facility.postal_system_action_window"/>
+
+    </data>
+</odoo>

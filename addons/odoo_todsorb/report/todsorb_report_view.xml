@@ -1,0 +1,31 @@
+<odoo>
+    <record model="ir.ui.view" id="odoo_todsorb_report_wizard">
+        <field name="name">Odoo Todsorb Report</field>
+        <field name="model">odoo.todsorb.report.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Odoo Todsorb Report">
+                <group>
+                    <field name="name_code"/>
+                </group>
+                <footer>
+                    <button name="get_report" string="Get Report" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="action_odoo_todsorb_report_wizard"
+                name="Odoo Todsorb Report"
+                res_model="todsorb_report_wizard"
+                view_mode="form"
+                target="new"/>
+
+
+    <menuitem id="menu_odoo_todsorb_report_wizard"
+            name="รายงานทดสอบ"
+            parent="odoo_todsorb.report_menu"
+            action="action_odoo_todsorb_report_wizard"
+            sequence="15"/>
+</odoo>

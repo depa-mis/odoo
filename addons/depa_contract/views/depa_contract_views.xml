@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+        
+        <!-- depa contract list view -->
+        <record model="ir.ui.view" id="depa_contract_list">
+            <field name="name">depa.contract.list</field>
+            <field name="model">depa_contract</field>
+            <field name="arch" type="xml">
+                <tree string="รายชื่อผู้ทำสัญญา">
+                    <field name="name"/>
+                    <field name="company"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="depa_contract_form">
+            <field name="name">depa.contract.form</field>
+            <field name="model">depa_contract</field>
+            <field name="arch" type="xml">
+                <form string="รายชื่อผู้ทำสัญญา">
+                    <sheet>
+                        <div id="depa_employee_container">
+                            <div id="depa_employee_main">
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="name" placeholder="ชื่อผู้ทำสัญญา"/>
+                                        <br/>
+                                        <field name="company" placeholder="ชื่อบริษัท"/>
+                                    </h1>
+                                </div>
+                                <notebook>
+                                    <page name="detail" string="ข้อมูล">
+                                        <group colspan="4" col="12">
+                                            <group string="ข้อมูลการติดต่อ" colspan="4">
+                                                <field name="email"/>
+                                                <field name="user_id"/>
+                                            </group>
+                                        </group>
+                                        <group colspan="4" col="12">
+                                            <group string="ข้อมูล signature" colspan="8">
+                                                <field name="cad_password"/>
+                                                <field name="certificate_file" widget="many2many_binary" />
+                                                <field name="sign_img" widget="image" width="200px"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                </notebook>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="depa_contract_action_window">
+            <field name="name">ข้อมูลผู้ทำสัญญา</field>
+            <field name="res_model">depa_contract</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="depa_contract_action_window_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="depa_contract_list"/>
+            <field name="act_window_id" ref="depa_contract_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="depa_contract_action_window_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="depa_contract_form"/>
+            <field name="act_window_id" ref="depa_contract_action_window"/>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem name="depa Contract" id="depa_contract.menu_depa_contract_root" web_icon="depa_contract,static/description/icon.png"/>
+
+        <!-- menu -->
+        <menuitem name="รายชื่อ" sequence="1" id="depa_contract.menu_contract_list" parent="depa_contract.menu_depa_contract_root" action="depa_contract.depa_contract_action_window"/>
+
+    </data>
+</odoo>

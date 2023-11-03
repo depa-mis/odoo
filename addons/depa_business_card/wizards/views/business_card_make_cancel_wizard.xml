@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="business_card_make_cancel_wizard_form" model="ir.ui.view">
+      <field name="name">business card make cancel wizard form</field>
+      <field name="model">business_card_make_cancel_wizard</field>
+      <field name="arch" type="xml">
+        <form string="Make Cancel Wizard">
+             <sheet>
+                 <group>
+                     <field name="business_card_line_id" invisible="1"/>
+                     <field name="remark"/>
+                 </group>
+             </sheet>
+            <footer>
+                <button string="Save" class="btn-primary" icon="fa-save" type="object" name="action_save_cancel"/>
+                <button string="Discard" class="btn-secondary" icon="fa-times" special="cancel"/>
+            </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="business_card_make_cancel_wizard_action_window" model="ir.actions.act_window" >
+        <field name="name">business card make cancel wizard window</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">business_card_make_cancel_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="business_card_make_cancel_wizard_form" />
+        <field name="target">new</field>
+    </record>
+
+</odoo>

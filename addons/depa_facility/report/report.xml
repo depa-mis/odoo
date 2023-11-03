@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="report_address_label" model="ir.actions.report">
+        <field name="name">ใบปะหน้า</field>
+        <field name="model">postal_system</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">depa_facility.report_address_label</field>
+        <field name="report_file">depa_facility.report_address_label</field>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

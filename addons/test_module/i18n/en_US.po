@@ -1,0 +1,197 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* test_module
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-03 09:07+0000\n"
+"PO-Revision-Date: 2021-03-03 09:07+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation__active
+msgid "Active"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__create_uid
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__create_date
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation__desc
+msgid "Desc"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__description
+msgid "Description"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__display_name
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__id
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation__id
+msgid "ID"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module____last_update
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__write_uid
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__write_date
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: test_module
+#: model:ir.ui.menu,name:test_module.menu_1_list
+msgid "List"
+msgstr ""
+
+#. module: test_module
+#: model:ir.ui.menu,name:test_module.test_relation_menu_1_list
+msgid "List test_relation"
+msgstr ""
+
+#. module: test_module
+#: model:ir.ui.menu,name:test_module.menu_1
+msgid "Menu 1"
+msgstr "Test"
+
+#. module: test_module
+#: model:ir.ui.menu,name:test_module.menu_2
+msgid "Menu 2"
+msgstr "XXXX"
+
+#. module: test_module
+#: model:ir.ui.menu,name:test_module.test_relation_menu_1
+msgid "Menu test_relation 1"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__name
+msgid "Name"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__position
+msgid "Position"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation__relation
+msgid "Relation"
+msgstr ""
+
+#. module: test_module
+#: model:ir.ui.menu,name:test_module.test_module
+msgid "Server to list"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__test_relation_id
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__test_relation_ids
+msgid "Test Relation"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__value
+msgid "Value"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__value2
+msgid "Value2"
+msgstr ""
+
+#. module: test_module
+#: model:ir.ui.menu,name:test_module.menu_root
+msgid "my_test_module"
+msgstr ""
+
+#. module: test_module
+#: model:ir.actions.server,name:test_module.action_server
+msgid "test_module server"
+msgstr ""
+
+#. module: test_module
+#: model:ir.actions.act_window,name:test_module.action_window
+msgid "test_module window"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model,name:test_module.model_test_module_test_module
+msgid "test_module.test_module"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model,name:test_module.model_test_module_test_relation
+msgid "test_module.test_relation"
+msgstr ""
+
+#. module: test_module
+#: model:ir.actions.act_window,name:test_module.test_relation_action_window
+msgid "test_relation window"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model,name:test_module.model_test_relation_test_relation
+msgid "test_relation.test_relation"
+msgstr ""
+
+#. module: test_module
+#: model_terms:ir.ui.view,arch_db:test_module.form
+msgid "ความสัมพันธ์"
+msgstr ""
+
+#. module: test_module
+#: model_terms:ir.ui.view,arch_db:test_module.form
+msgid "คำอธิบาย"
+msgstr ""
+
+#. module: test_module
+#: model:ir.module.category,description:test_module.module_category_test
+#: model:ir.module.category,name:test_module.module_category_test
+msgid "ระบบสารบรรณ"
+msgstr ""
+
+#. module: test_module
+#: model:ir.model.fields,field_description:test_module.field_test_module_test_module__status
+#: model:ir.model.fields,field_description:test_module.field_test_relation_test_relation__status
+msgid "สถานะ"
+msgstr ""
+
+#. module: test_module
+#: model:res.groups,comment:test_module.group_user_document_rec
+#: model:res.groups,name:test_module.group_user_document_rec
+msgid "สร้างหนังสือรับ"
+msgstr ""

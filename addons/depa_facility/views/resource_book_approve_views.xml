@@ -1,0 +1,153 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="resource_book_approve_list">
+            <field name="name">resource_book_approve_list</field>
+            <field name="model">resource_book</field>
+            <field name="arch" type="xml">
+                <tree string="ขอใช้บริการพาหนะ" default_order="create_date desc"
+                      decoration-success="resource_book_state == 'completed'"
+                      decoration-danger="resource_book_state == 'rejected'"
+                >
+                    <field name="resource_book_type"/>
+                    <field name="resource_book_car"/>
+                    <field name="resource_book_user"/>
+                    <field name="resource_book_destination"/>
+                    <field name="resource_book_start"/>
+                    <field name="resource_book_end"/>
+                    <field name="resource_book_state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="resource_book_approve_form">
+            <field name="name">resource_book_approve_form</field>
+            <field name="model">resource_book</field>
+            <field name="arch" type="xml">
+                <form string="ขอใช้บริการพาหนะ">
+                    <header>
+                        <button string="อนุมัติ"
+                                name="send_resource_approve"
+                                type="object"
+                                icon="fa-check"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('resource_book_state', 'not in', ('pending'))]}"
+                                confirm="ต้องการอนุมัติคำขอจองพาหนะ่"/>
+                        <button string="ปฏิเสธ"
+                                name="send_resource_reject"
+                                type="object"
+                                icon="fa-times"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('resource_book_state', 'not in', ('pending'))]}"
+                                confirm="ต้องการปฏิเสธคำขอจองพาหนะ่"/>
+                        <field name="resource_book_state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="resource_book_type" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="resource_book_user"  />
+                                </group>
+                                <group colspan="6">
+                                    <field name="resource_book_head" attrs="{'readonly': [('resource_book_state', '!=', 'draft')]}"  />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="resource_book_start" />
+                                </group>
+                                <group colspan="3">
+                                    <field name="resource_book_sdate" readonly="1" force_save="1"/>
+                                </group>
+                                <group colspan="3">
+                                    <field name="resource_book_stime" readonly="1" force_save="1" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="resource_book_end" />
+                                </group>
+                                <group colspan="3">
+                                    <field name="resource_book_edate" readonly="1" force_save="1" />
+                                </group>
+                                <group colspan="3">
+                                    <field name="resource_book_etime" readonly="1" force_save="1" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="resource_book_car" widget="radio" domain="[('resource_type', '=', resource_book_type)]" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="resource_book_source" />
+                                </group>
+                                <group colspan="6">
+                                    <field name="resource_book_destination" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="resource_book_desc" attrs="{'readonly': [('resource_book_state', '!=', 'draft')]}" />
+                                </group>
+                            </group>
+
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="resource_book_wait" widget="radio"/>
+                                </group>
+                                 <group colspan="6" attrs="{'invisible': [('resource_book_wait', '!=', 'wait')]}">
+                                    <field name="resource_book_waittime" widget="float_time" attrs="{'required': [('resource_book_wait', '=', 'wait')]}"/>
+                                </group>
+                            </group>
+
+                        </group>
+                        <notebook>
+                        <page string="ผู้ร่วมเดินทาง">
+                                <field name="resource_book_user_ids" attrs="{'readonly': [('resource_book_state', '!=', 'draft')]}">
+                                    <tree string="ผู้ร่วมเดินทาง" editable="bottom">
+                                        <field name="employee_id"/>
+                                        <field name="job_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="resource_book_approve_action_window">
+            <field name="name">อนุมัติจองพาหนะ</field>
+            <field name="res_model">resource_book</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('resource_book_state', '!=', 'draft')]</field>
+
+        </record>
+        <record model="ir.actions.act_window.view" id="resource_book_approve_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="resource_book_approve_list"/>
+            <field name="act_window_id" ref="resource_book_approve_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="resource_book_approve_action_window_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="resource_book_approve_form"/>
+            <field name="act_window_id" ref="resource_book_approve_action_window"/>
+        </record>
+
+        <menuitem name="อนุมัติจองพาหนะ" sequence="2" id="depa_facility.resource_book_approve"
+                  parent="depa_facility.menu_resource_system"
+                  action="depa_facility.resource_book_approve_action_window"
+                  groups="group_approval_depa_facility_resource"
+        />
+
+    </data>
+</odoo>

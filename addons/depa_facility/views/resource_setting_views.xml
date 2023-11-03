@@ -1,0 +1,86 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="resource_setting_list">
+            <field name="name">resource_setting_list</field>
+            <field name="model">resource_setting</field>
+            <field name="arch" type="xml">
+                <tree string="ตั้งค่าพาหนะ" default_order="create_date desc">
+                    <field name="resource_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="resource_setting_form">
+            <field name="name">resource_setting_form</field>
+            <field name="model">resource_setting</field>
+            <field name="arch" type="xml">
+                <form string="ตั้งค่าพาหนะ">
+                    <sheet>
+                        <group>
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="resource_name" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                 <group colspan="6">
+                                    <field name="resource_type" />
+                                </group>
+                                <group colspan="6">
+                                    <field name="resource_capacity" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                 <group colspan="6">
+                                    <field name="resource_driver" />
+                                </group>
+                                <group colspan="6">
+                                    <field name="resource_phone" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                 <group colspan="6">
+                                    <field name="resource_license" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                 <group colspan="6">
+                                    <field name="resource_img" string="รูป" widget="image" width="200px"/>
+                                </group>
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="resource_setting_action_window">
+            <field name="name">ตั้งค่าพาหนะ</field>
+            <field name="res_model">resource_setting</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="resource_setting_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="resource_setting_list"/>
+            <field name="act_window_id" ref="resource_setting_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="resource_setting_action_window_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="resource_setting_form"/>
+            <field name="act_window_id" ref="resource_setting_action_window"/>
+        </record>
+
+        <menuitem name="บริการพาหนะ" sequence="1" id="depa_facility.menu_resource_system" parent="depa_facility.menu_depa_facility_root"/>
+
+        <menuitem name="ตั้งค่าพาหนะ" sequence="1" id="depa_facility.resource_setting" parent="depa_facility.menu_resource_system"
+                  action="depa_facility.resource_setting_action_window"
+                  groups="group_setting_depa_facility_resource"
+        />
+
+    </data>
+</odoo>

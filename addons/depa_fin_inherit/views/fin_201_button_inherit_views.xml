@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_fin_201_button_form_inherit" model="ir.ui.view">
+		<field name="name">fin.201.button.form.inherit</field>
+		<field name="model">fw_pfb_fin_system_201</field>
+		<field name="inherit_id" ref="fin_system.fin_system_201_all_fin_form_view"/>
+		<field name="arch" type="xml">
+			<xpath expr="//form/header" position="inside">
+				<field name="fin_approved" invisible="1"/>
+				<button name="approve_fin_audit" string="ตรวจสอบแล้ว" type="object"
+				groups="depa_fin_inherit.access_fin_201_button_inherit"
+				class="oe_highlight" confirm="ปรับสถานะเป็นตรวจสอบแล้วหรือไม่?"
+				attrs="{'invisible': ['|', ('state', '!=', 'completed'), ('fin_approved', '=', True)]}"/>
+			</xpath>
+		</field>
+	</record>
+</odoo>

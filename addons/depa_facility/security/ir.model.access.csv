@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_postal_system,postal_system,model_postal_system,,1,1,1,1
+access_postal_destination_province,postal_destination_province,model_postal_destination_province,,1,1,1,1
+access_postal_destination_country,postal_destination_country,model_postal_destination_country,,1,1,1,1
+access_postal_destination_preset,postal_destination_preset,model_postal_destination_preset,,1,1,1,1
+access_postal_destination_preset,postal_destination_preset,model_postal_destination_preset,,1,1,1,1
+access_resource_setting,resource_setting,model_resource_setting,,1,1,1,1
+access_resource_book,resource_book,model_resource_book,,1,1,1,1
+access_resource_book_user,resource_book_user,model_resource_book_user,,1,1,1,1
+access_room_setting,room_setting,model_room_setting,,1,1,1,1
+access_room_book,room_book,model_room_book,,1,1,1,1
+access_room_book_invite,room_book_invite,model_room_book_invite,,1,1,1,1

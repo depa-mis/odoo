@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model="ir.module.category" id="module_category_depa_facility_group">
+            <field name="name">depa Facility</field>
+            <field name="description">depa Facility</field>
+        </record>
+
+        <record id="group_user_depa_facility_setting" model="res.groups">
+            <field name="name">สามารถปรับตั้งค่าข้อมูลของระบบไปรษณีย์</field>
+            <field name="comment">สามารถปรับตั้งค่าข้อมูลในระบบ</field>
+            <field name="category_id" ref="module_category_depa_facility_group"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="group_approval_depa_facility" model="res.groups">
+            <field name="name">สามารถใส่ค่าเลขสติ๊กเกอร์ของคำขอใช้บริการไปรษณีย์</field>
+            <field name="comment">สามารถใส่ค่าเลขสติ๊กเกอร์ของคำขอใช้บริการไปรษณีย์</field>
+            <field name="category_id" ref="module_category_depa_facility_group"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="group_approval_depa_facility_resource" model="res.groups">
+            <field name="name">สามารถอนุมัติการจองพาหนะ</field>
+            <field name="comment">สามารถอนุมัติการจองพาหนะ</field>
+            <field name="category_id" ref="module_category_depa_facility_group"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="group_setting_depa_facility_resource" model="res.groups">
+            <field name="name">สามารถตั้งค่าพาหนะ</field>
+            <field name="comment">สามารถตั้งค่าพาหนะ</field>
+            <field name="category_id" ref="module_category_depa_facility_group"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="group_approval_depa_facility_room" model="res.groups">
+            <field name="name">สามารถอนุมัติการจองห้องประชุม</field>
+            <field name="comment">สามารถอนุมัติการจองห้องประชุม</field>
+            <field name="category_id" ref="module_category_depa_facility_group"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="group_setting_depa_facility_room" model="res.groups">
+            <field name="name">สามารถตั้งค่าห้องประชุม</field>
+            <field name="comment">สามารถตั้งค่าห้องประชุม</field>
+            <field name="category_id" ref="module_category_depa_facility_group"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_waiting_fin_system_100_line,access_waiting_fin_system_100_line,model_waiting_fin_system_100_line,fin_system.fw_pfb_fin_system_user,1,1,1,1
+
+

@@ -1,0 +1,123 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="postal_destination_province_list">
+            <field name="name">postal_destination_province_list</field>
+            <field name="model">postal_destination_province</field>
+            <field name="arch" type="xml">
+                <tree string="จังหวัด" editable="bottom" create="1" delete="1">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="postal_destination_country_list">
+            <field name="name">postal_destination_country_list</field>
+            <field name="model">postal_destination_country</field>
+            <field name="arch" type="xml">
+                <tree string="ประเทศ" editable="bottom" create="1" delete="1">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="postal_destination_preset_list">
+            <field name="name">postal_destination_preset_list</field>
+            <field name="model">postal_destination_preset</field>
+            <field name="arch" type="xml">
+                <tree string="ตัวอย่างปลายทาง" create="1">
+                    <field name="name" string="ชื่อ"/>
+                    <field name="destination_detail" string="ที่อยู่ปลายทาง"/>
+                    <field name="destination_province" string="จังหวัด"/>
+                    <field name="destination_postal_code" string="รหัสไปรษณีย์"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="postal_destination_preset_form">
+            <field name="name">postal_destination_preset_form</field>
+            <field name="model">postal_destination_preset</field>
+            <field name="arch" type="xml">
+                <form string="ตัวอย่างปลายทาง">
+                    <sheet>
+                        <group>
+                            <group colspan="4" col="12">
+                                <group colspan="4">
+                                    <field name="name" string="ชื่อ"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="4">
+                                    <field name="destination_province" string="จังหวัด"/>
+                                </group>
+                                <group colspan="4">
+                                    <field name="destination_postal_code" string="รหัสไปรษณีย์"/>
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="8">
+                                    <field name="destination_detail" string="ที่อยู่ปลายทาง"/>
+                                </group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="postal_destination_province_action_window">
+            <field name="name">ตั้งค่าจังหวัด</field>
+            <field name="res_model">postal_destination_province</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="postal_destination_country_action_window">
+            <field name="name">ตั้งค่าประเทศ</field>
+            <field name="res_model">postal_destination_country</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="postal_destination_preset_action_window">
+            <field name="name">ตัวอย่างปลายทาง</field>
+            <field name="res_model">postal_destination_preset</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="postal_destination_province_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="postal_destination_province_list"/>
+            <field name="act_window_id" ref="postal_destination_province_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="postal_destination_country_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="postal_destination_country_list"/>
+            <field name="act_window_id" ref="postal_destination_country_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="postal_destination_preset_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="postal_destination_preset_list"/>
+            <field name="act_window_id" ref="postal_destination_preset_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="postal_destination_preset_action_window_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="postal_destination_preset_form"/>
+            <field name="act_window_id" ref="postal_destination_preset_action_window"/>
+        </record>
+
+        <!-- Sub Menu for Postal System -->
+        <menuitem name="ตั้งค่าจังหวัด" sequence="2" id="depa_facility.menu_postal_destination_province" 
+        parent="depa_facility.menu_postal_system" action="depa_facility.postal_destination_province_action_window" 
+        groups="group_user_depa_facility_setting"/>
+        
+        <menuitem name="ตั้งค่าประเทศ" sequence="3" id="depa_facility.menu_postal_destination_country" 
+        parent="depa_facility.menu_postal_system" action="depa_facility.postal_destination_country_action_window" 
+        groups="group_user_depa_facility_setting"/>
+        
+        <menuitem name="ตัวอย่างปลายทาง" sequence="4" id="depa_facility.menu_postal_destination_preset" 
+        parent="depa_facility.menu_postal_system" action="depa_facility.postal_destination_preset_action_window"
+        groups="group_user_depa_facility_setting"/>
+
+    </data>
+</odoo>

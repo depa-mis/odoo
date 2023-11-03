@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+admin_access, db_backup admin access,model_db_backup,base.group_no_one,1,1,1,1
+admin_security_rule, Model db_backup admin access,model_db_backup,advance_auto_backup.group_manager,1,1,1,1
+advance_auto_backup_ir_cron_id,advance_auto_backup_ir_cron_id,base.model_ir_cron,advance_auto_backup.group_manager,1,1,1,1
+advance_auto_backup_ir_config_parameter_id,advance_auto_backup_ir_config_parameter_name,base.model_ir_config_parameter,advance_auto_backup.group_user,1,0,0,0
+advance_auto_backup_mail_mail_id,advance_auto_backup_mail_mail_name,mail.model_mail_mail,advance_auto_backup.group_user,1,1,1,0

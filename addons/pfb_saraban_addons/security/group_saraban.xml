@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>    
+<odoo>
+    <data noupdate="0">
+        <record id="display_set_to_complete_document_internal" model="res.groups">
+            <field name="name">แสดงปุ่มเสร็จสมบูรณ์ หนังสือภายใน</field>
+            <field name="comment">แสดงปุ่มเสร็จสมบูรณ์ หนังสือภายใน</field>
+            <field name="category_id" ref="pfb_saraban.module_category_saraban"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        
+        <record id="display_set_to_complete_receive_document" model="res.groups">
+            <field name="name">แสดงปุ่มเสร็จสมบูรณ์ หนังสือรับ</field>
+            <field name="comment">แสดงปุ่มเสร็จสมบูรณ์ หนังสือรับ</field>
+            <field name="category_id" ref="pfb_saraban.module_category_saraban"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+    </data>
+</odoo>

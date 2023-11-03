@@ -1,0 +1,70 @@
+<odoo>
+    <record model="report.paperformat" id="paperformat_odoo_todsorb_reportodoo_todsorb_report">
+        <field name="name">paperformat.odoo.todsorb.report</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">30</field>
+        <field name="margin_right">5</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">25</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report id="odoo_todsorb_report"
+            model="todsorb_report_wizard"
+            string="Seat Reservation Report"
+            report_type="qweb-pdf"
+            name="tb_report.seat_reservation_report_view"
+            paperformat="paperformat_seat_reservation_report"
+            menu="False"/>
+
+    <template id="odoo_todsorb_report_view">
+        <t t-call="web.html_container">
+            <div class="header" style="border-bottom: 2px solid black">
+                <h3 class="text-center">รายงาน </h3>
+            </div>
+            <div class="article">
+                <t t-foreach="docs" t-as="doc">
+                    <table class="table table-bordered" style="width: 100%;" >
+                        <thead>
+                            <tr>
+                                <th class="text-center" style="width: 70%;" colspan="3">
+                                    <t t-esc="learn_name" />
+                                </th>
+                                <th class="text-center" style="width: 30%;">
+                                    เลขที่นั่ง
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="row_count" t-value="0" />
+                            <t t-foreach="doc_value['seat_list']" t-as="sl">
+                                <tr>
+                                    <td>
+                                        <t t-set="row_count" t-value="row_count + 1" />
+                                        <t t-esc="row_count" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="sl_value['student_code']" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="sl_value['student_name']" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="sl_value['seat_no']" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </t>
+            </div>
+
+        </t>
+    </template>
+</odoo>

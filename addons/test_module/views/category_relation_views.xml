@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="test_category_relation_list">
+            <field name="name">test_category list</field>
+            <field name="model">test_category_relation.test_category_relation</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="relation_name" />
+                    <field name="status" />
+                    <field name="description" />
+                    <field name="active" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="test_category_relation_view">
+            <field name="name">test_category form</field>
+            <field name="model">test_category_relation.test_category_relation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="relation_name" />
+                        <field name="status" />
+                    </group>
+                    <group>
+                        <field name="description" />
+                    </group>
+                    <group>
+                        <field name="active" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="test_category_relation_action_window">
+          <field name="name">test_category window</field>
+          <field name="res_model">test_category_relation.test_category_relation</field>
+          <field name="view_mode">tree,form</field>
+          <field name="domain">['|', ('active', '=', 'True'), ('active', '!=', 'True') ]</field>
+        </record>
+
+        <menuitem name="Category Relation" id="test_category_relation_menu_list" parent="test_category_menu"
+                  action="test_category_relation_action_window" />
+    </data>
+</odoo>

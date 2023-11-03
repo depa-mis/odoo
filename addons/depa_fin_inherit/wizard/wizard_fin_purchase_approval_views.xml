@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="wizard_fin100_approval_view_inherit" model="ir.ui.view">
+            <field name="name">view.wizard.fin100.approval.form.inherit</field>
+            <field name="model">wizard.fin100.approval</field>
+            <field name="inherit_id" ref="fin_system_extension.wizard_fin100_approval_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='note']" position="replace">
+                    
+                </xpath>
+                <xpath expr="//footer" position="before">
+                    <field name="note" colspan="12"/>
+                </xpath>
+            </field>
+        </record>
+        
+
+    </data>
+</odoo>

@@ -1,0 +1,76 @@
+<odoo>
+    <data>
+        Corporate
+        <record model="ir.ui.view" id="kpi_record_corporate_main_list">
+            <field name="name">KPI Record Corporate Main List</field>
+            <field name="model">kpi_pm_lines</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="fiscal_year" string="ปีงบประมาณ"/>
+                    <field name="kpi_id" string="รหัสตัวชี้วัด"/>
+                    <field name="kpi_name" string="ชื่อตัวชี้วัด"/>
+                    <field name="kpi_project_id" string="ชื่อโครงการ"/>
+                    <field name="kpi_pm_weight" string="Weight"/>
+                    <field name="kpi_budget_amount" string="Budget"/>
+                    <field name="kpi_start_date" string="วันเริ่มต้น"/>
+                    <field name="kpi_end_date" string="วันสิ้นสุด"/>
+                    <field name="kpi_pm_target" string="Target"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="kpi_record_corporate_main_form">
+            <field name="name">KPI Record Corporate Main Form</field>
+            <field name="model">kpi_pm_lines</field>
+            <field name="arch" type="xml">
+                <form string="รายงานผลการปฏิบัติงาน">
+                    <group>
+                        <group colspan="4" col="12">
+                            <group colspan="6">
+                                <field name="kpi_start_date" string="วันเริ่มต้น"/>
+                            </group>
+                            <group colspan="6">
+                                <field name="kpi_end_date" string="วันสิ้นสุด"/>
+                            </group>
+                        </group>
+                        <group colspan="4" col="12">
+                            <group colspan="6">
+                                <field name="kpi_id" string="รหัสตัวชี้วัด"/>
+                            </group>
+                            <group colspan="6">
+                                <field name="kpi_name" string="ชื่อตัวชี้วัด"/>
+                            </group>
+                        </group>
+                        <group colspan="4" col="12">
+                            <group colspan="12">
+                                <field name="kpi_project_id" string="ชื่อโครงการ"/>
+                            </group>
+                        </group>
+                        <group colspan="4" col="12">
+                            <group colspan="6">
+                                <field name="kpi_pm_weight" string="น้ำหนัก"/>
+                            </group>
+                            <group colspan="6">
+                                <field name="kpi_budget_amount" string="งบประมาณ"/>
+                            </group>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="kpi_record_corporate_main_action_window">
+            <field name="name">KPI Record Corporate Action Window</field>
+            <field name="res_model">kpi_pm_lines</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="kpi_record_corporate_main_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="kpi_record_corporate_main_list"/>
+            <field name="act_window_id" ref="kpi_record_corporate_main_action_window"/>
+        </record>
+
+        <!-- Top Menu Item -->
+        <menuitem name="KPI" id="depa_kpi_record.menu_root"/>
+        <!-- Menu Categories -->
+        <menuitem name="Corporate" id="depa_kpi_record.corporate_menu" parent="depa_kpi_record.menu_root" action="kpi_record_corporate_main_action_window"/>
+    </data>
+</odoo>

@@ -1,0 +1,81 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="room_setting_list">
+            <field name="name">room_setting_list</field>
+            <field name="model">room_setting</field>
+            <field name="arch" type="xml">
+                <tree string="ตั้งค่าพห้องประชุม" default_order="create_date desc">
+                    <field name="room_name"/>
+                    <field name="room_floor"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="room_setting_form">
+            <field name="name">room_setting_form</field>
+            <field name="model">room_setting</field>
+            <field name="arch" type="xml">
+                <form string="ตั้งค่าห้องประชุม">
+                    <sheet>
+                        <group>
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="room_name" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="room_floor" />
+                                </group>
+                                <group colspan="6">
+                                    <field name="room_capacity" />
+                                </group>
+                            </group>
+                            <group colspan="4" col="12">
+                                <group colspan="6">
+                                    <field name="is_approve" />
+                                </group>
+                            </group>
+
+
+                            <group colspan="4" col="12">
+                                 <group colspan="6">
+                                    <field name="room_img" string="รูป" widget="image" width="200px"/>
+                                </group>
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="room_setting_action_window">
+            <field name="name">ตั้งค่าห้องประชุม</field>
+            <field name="res_model">room_setting</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="room_setting_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="room_setting_list"/>
+            <field name="act_window_id" ref="room_setting_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="room_setting_action_window_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="room_setting_form"/>
+            <field name="act_window_id" ref="room_setting_action_window"/>
+        </record>
+
+        <menuitem name="บริการห้องประชุม" sequence="1" id="depa_facility.menu_room_system" parent="depa_facility.menu_depa_facility_root"/>
+
+        <menuitem name="ตั้งค่าห้องประชุม" sequence="1" id="depa_facility.room_setting" parent="depa_facility.menu_room_system"
+                  action="depa_facility.room_setting_action_window"
+                  groups="group_setting_depa_facility_room"
+        />
+
+    </data>
+</odoo>

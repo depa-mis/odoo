@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- View -->
+
+
+        <record id="fin_system_100_dashboard_view" model="ir.ui.view">
+            <field name="name">fin.system.100.dashboard.sample.view</field>
+            <field name="model">fin.system.100.dashboard.sample</field>
+            <field name="arch" type="xml">
+                <form create="0" edit="0" delete="0">
+                    <iframe src="fin_system_dashboard" marginleft="0" marginheight="0" marginwidth="0"
+                            frameborder="0" style="width: calc(100% - -16px);height: calc(100vh - 100px);"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_fin_system_100_dashboard_view" model="ir.actions.act_window">
+            <field name="name">FIN100 dashboard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fin.system.100.dashboard.sample</field>
+            <field name="target">inline</field>
+            <field name="view_mode">form</field>
+            <field name="domain">[('user_id', '=', uid)]</field>
+        </record>
+
+        <!-- MenuItem -->
+        <menuitem id="fin_system_100_dashboard_menu"
+                  name="FIN 100 Dashboard"
+                  action="action_fin_system_100_dashboard_view"
+                  sequence="5"/>
+
+    </data>
+</odoo>

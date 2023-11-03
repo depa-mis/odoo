@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.auth.oauth</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+             <div id="module_auth_oauth" position="after">
+                    <div class="col-12 col-lg-6 o_setting_box" >
+                        <div class="o_setting_left_pane">
+                            <group name="authentication_cas">
+                    <label for="id" string="CAS authentication"/>
+                    <div name="auth_cas">
+                        <div>
+                            <field name="cas_activated"/>
+                            <label for="cas_activated"/>
+                        </div>
+                        <group>
+                            <div name="auth_cas">
+                                <div>
+                                    <label for="cas_server" class="oe_inline"/>
+                                    <field name="cas_server"
+                                           class="oe_inline"/>
+                                    <div class="cas_check"
+                                         style="padding:24px 10px">
+                                        <button help="Check settings of CAS server"
+                                                type="object"
+                                                name="check_cas_server"
+                                                icon="/auth_cas/static/src/img/gtk-apply.png"/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="cas_server_port"
+                                           class="oe_inline"/>
+                                    <field name="cas_server_port"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                            <label for="id"/>
+                        </group>
+                        <div>
+                            <field name="cas_create_user"/>
+                            <label for="cas_create_user"/>
+                        </div>
+                    </div>
+                </group>
+                        </div>
+                    </div>
+             </div>
+       </field>
+    </record>
+
+
+</odoo>

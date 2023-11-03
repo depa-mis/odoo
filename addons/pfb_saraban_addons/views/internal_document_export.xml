@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="internal_document_export_tree_views">
+        <field name="name">internal.document.export.tree</field>
+        <field name="model">document.internal.main</field>
+        <field name="arch" type="xml">
+            <tree string="ทะเบียนหนังสืือส่งออกของหน่วยงานภายใน" default_order="id desc" create="false" edit="false" delete="false" duplicate="false">
+                <field name="name" />
+                <field name="name_real" />
+                <field name="date_document_real" />
+                <field name="department_name" />
+                <field name="subject" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="internal_document_export_pivot_views" model="ir.ui.view">
+        <field name="name">internal.document.export.pivot</field>
+        <field name="model">document.internal.main</field>
+        <field name="arch" type="xml">
+            <pivot string="ทะเบียนหนังสือส่งออกของหน่วยงานภายใน">
+                <field name="department_name" type="row"  />
+                <field name="document_type" type="row"  />
+                <field name="date_document" type="row"  />
+                <field name="date_document_real" type="row" />
+                <field name="approval_count" invisible="1" />
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Receive Main All list action -->
+    <record model="ir.actions.act_window" id="internal_document_export_action">
+        <field name="name">ทะเบียนหนังสือส่งออกของหน่วยงานภายใน</field>
+        <field name="res_model">document.internal.main</field>
+        <field name="view_id" ref="internal_document_export_tree_views"/>
+        <field name="view_mode">tree,pivot,graph</field>
+        <field name="domain">[
+                ('document_type','=','หนังสือภายนอก+หนังสือรับรอง'),
+            ]</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="internal_document_export_action_tree">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="internal_document_export_tree_views"/>
+        <field name="act_window_id" ref="internal_document_export_action"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="internal_external_export_action_pivot">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="internal_document_export_pivot_views"/>
+        <field name="act_window_id" ref="internal_document_export_action"/>
+    </record>
+    <!-- END Receive Main All list action -->
+
+</odoo>

@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="business_category_list">
+            <field name="name">business_category_list</field>
+            <field name="model">business_category</field>
+            <field name="arch" type="xml">
+                <tree string="Business Category" default_order="create_date desc">
+                    <field name="category_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="business_category_form">
+            <field name="name">business_category_form</field>
+            <field name="model">business_category</field>
+            <field name="arch" type="xml">
+                <form string="Business Category">
+                    <sheet>
+                        <group>
+                            <group colspan="4" col="12">
+                                <group colspan="12">
+                                    <field name="category_name" />
+                                </group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="business_category_action_window">
+            <field name="name">Business Category</field>
+            <field name="res_model">business_category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="business_category_action_window_list">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="business_category_list"/>
+            <field name="act_window_id" ref="business_category_action_window"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="business_category_action_window_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="business_category_form"/>
+            <field name="act_window_id" ref="business_category_action_window"/>
+        </record>
+
+
+        <menuitem name="ตั้งค่า" id="depa_business_card.menu_setting_system" parent="depa_business_card.menu_depa_business_card_root"/>
+
+        <menuitem name="ตั้งค่าหมวดหมู่" id="depa_business_card.menu_category_system" parent="depa_business_card.menu_setting_system" action="depa_business_card.business_category_action_window"/>
+
+
+    </data>
+</odoo>

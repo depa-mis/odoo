@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>    
+<odoo>
+    <data noupdate="0">
+
+        <record model="ir.module.category" id="module_category_todsorb">
+            <field name="name">administrator</field>
+            <field name="description">ระบบทดสอบ</field>
+            <field name="sequence">100</field>
+        </record>
+
+        <record id="fw_pfb_fin_system_user" model="res.groups">
+            <field name="name">Show FIN system</field>
+            <field name="comment">Can see menu FIN system</field>
+            <field name="category_id" ref="module_category_todsorb"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="work_acceptance_name_form_inherit_fix">
+            <field name="name">work acceptance name form inherit fix</field>
+            <field name="model">work.acceptance</field>
+            <field name="inherit_id" ref="purchase_work_acceptance.view_work_acceptance_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_accept']" position="replace">
+                    <field name="date_accept"/>
+                </xpath>
+            </field>
+        </record>
+</odoo>

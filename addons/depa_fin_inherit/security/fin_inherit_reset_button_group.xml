@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data noupdate="0">
+		<record model="ir.module.category" id="module_category_fin_inherit_reset_button_group">
+			<field name="name">FIN Reset Button</field>
+			<field name="description">สิทธิ์ในการกดปุ่ม Reset การอนุมัติของ FIN</field>
+		</record>
+
+		<record id="group_fin_100_reset_button_setting" model="res.groups">
+			<field name="name">สิทธิ์กดปุ่ม Reset Button FIN100</field>
+			<field name="comment">สิทธิ์กดปุ่ม Reset Button FIN100</field>
+			<field name="category_id" ref="module_category_fin_inherit_reset_button_group" />
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+		</record>
+
+		<record id="group_fin_201_reset_button_setting" model="res.groups">
+			<field name="name">สิทธิ์กดปุ่ม Reset Button FIN201</field>
+			<field name="comment">สิทธิ์กดปุ่ม Reset Button FIN201</field>
+			<field name="category_id" ref="module_category_fin_inherit_reset_button_group" />
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+		</record>
+
+		<record id="group_fin_401_reset_button_setting" model="res.groups">
+			<field name="name">สิทธิ์กดปุ่ม Reset Button FIN401</field>
+			<field name="comment">สิทธิ์กดปุ่ม Reset Button FIN401</field>
+			<field name="category_id" ref="module_category_fin_inherit_reset_button_group" />
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+		</record>
+	</data>
+</odoo>

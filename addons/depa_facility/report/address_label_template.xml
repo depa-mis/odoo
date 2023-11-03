@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_address_label">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <t t-foreach="[1,2,3]" t-as="i">
+                        <div style="border: 1px solid black; width: 50%; padding: 10px; margin-top: 20px">
+                            <p style="text-align:right">[<span t-field="o.postal_serial"></span>]</p>
+                            <p t-field="o.recipient_name"></p>
+                            <p t-field="o.destination"></p>
+                            <p t-field="o.destination_province"></p>
+                            <p t-field="o.destination_postal_code"></p>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>
